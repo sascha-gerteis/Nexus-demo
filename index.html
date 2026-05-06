@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus AI | Master Website</title>
+  <meta name="description" content="Nexus AI master marketplace website with home, marketplace, about, contact, login, and dashboards in one file." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#132f55;
+      --primary2:#1d4b7f;
+      --ink:#102033;
+      --muted:#64748b;
+      --blue:#0ea5e9;
+      --blue2:#e8f7ff;
+      --green:#10b981;
+      --green2:#ecfdf5;
+      --purple:#8b5cf6;
+      --purple2:#f5f3ff;
+      --orange:#f59e0b;
+      --orange2:#fff7ed;
+      --red:#ef4444;
+      --red2:#fef2f2;
+      --bg:#f7fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --soft-line:#edf2f7;
+      --shadow:0 18px 50px rgba(15,23,42,.08);
+      --shadow2:0 10px 28px rgba(15,23,42,.06);
+      --radius-xl:32px;
+      --radius-lg:24px;
+      --radius-md:16px;
+      --container:1220px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font-family:inherit}
+    button{cursor:pointer}
+    .container{max-width:var(--container);margin:0 auto;padding:0 1.5rem}
+    .hidden{display:none!important}
+    .muted{color:var(--muted)}
+    .full{grid-column:1/-1}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(226,232,240,.82);
+    }
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.8rem 0;
+    }
+    .logo{
+      border:0;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      gap:.65rem;
+      color:var(--primary);
+      font-size:1.55rem;
+      font-weight:950;
+      letter-spacing:-.045em;
+      white-space:nowrap;
+    }
+    .logo-mark{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--blue));
+      box-shadow:0 12px 26px rgba(14,165,233,.2);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:0;
+    }
+    .logo span:last-child{color:var(--blue)}
+    .nav-links{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-link{
+      border:0;
+      background:transparent;
+      color:#475569;
+      font-weight:800;
+      font-size:.92rem;
+      padding:.65rem .78rem;
+      border-radius:12px;
+      transition:.16s ease;
+    }
+    .nav-link:hover,.nav-link.active{background:#eff8ff;color:#0369a1}
+
+    .btn{
+      border:0;
+      border-radius:14px;
+      padding:.9rem 1.05rem;
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.45rem;
+      transition:.18s ease;
+      white-space:nowrap;
+      line-height:1;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),#2563eb);color:#fff;box-shadow:0 14px 30px rgba(14,165,233,.23)}
+    .btn-dark{background:var(--primary);color:#fff}
+    .btn-ghost{background:#fff;color:var(--primary);border:1px solid var(--line)}
+    .btn-soft{background:#f8fafc;color:var(--primary);border:1px solid var(--line)}
+    .btn-danger{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+    .btn-small{padding:.62rem .78rem;font-size:.84rem;border-radius:11px}
+    .btn-full{width:100%}
+    .btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.46rem .75rem;
+      border:1px solid rgba(14,165,233,.28);
+      background:rgba(14,165,233,.08);
+      color:#075985;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+    .eyebrow::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--blue);box-shadow:0 0 16px rgba(14,165,233,.65)}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      border:1px solid #e2e8f0;
+      background:#fff;
+      border-radius:999px;
+      padding:.36rem .58rem;
+      font-size:.74rem;
+      font-weight:900;
+      color:#475569;
+      white-space:nowrap;
+    }
+    .pill.green{background:#ecfdf5;color:#047857;border-color:#bbf7d0}
+    .pill.blue{background:#eff6ff;color:#0369a1;border-color:#bfdbfe}
+    .pill.orange{background:#fff7ed;color:#b45309;border-color:#fed7aa}
+    .pill.red{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
+    .pill.purple{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
+    .tag{background:#f1f5f9;color:#526174;border-radius:999px;padding:.3rem .5rem;font-size:.74rem;font-weight:850}
+    .tag-row,.tags{display:flex;flex-wrap:wrap;gap:.38rem;margin:.8rem 0}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:5.2rem 0 4rem;
+      background:
+        radial-gradient(circle at 12% 15%,rgba(14,165,233,.16),transparent 28%),
+        radial-gradient(circle at 88% 0%,rgba(139,92,246,.13),transparent 30%),
+        linear-gradient(135deg,#f8fbff,#f3f8ff 48%,#fff);
+      border-bottom:1px solid #eaf0f7;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+    h1{font-size:clamp(2.65rem,5vw,5.1rem);line-height:.96;letter-spacing:-.07em;color:var(--primary);margin:1rem 0 1.2rem;font-weight:950}
+    h1 span{background:linear-gradient(135deg,var(--blue),#2563eb,var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{color:var(--muted);font-size:1.12rem;max-width:740px;margin-bottom:1.45rem;line-height:1.75}
+    .hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin:1.5rem 0}
+    .trust-row{display:flex;flex-wrap:wrap;gap:.55rem}
+    .trust-row span{padding:.5rem .72rem;border:1px solid #e2e8f0;background:#fff;border-radius:999px;color:#526174;font-weight:850;font-size:.85rem;box-shadow:0 8px 20px rgba(15,23,42,.04)}
+    .hero-panel{background:rgba(255,255,255,.82);border:1px solid rgba(226,232,240,.88);border-radius:30px;padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+    .panel-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1rem .75rem;font-weight:950;color:var(--primary)}
+    .mini-stack{display:grid;gap:.75rem}
+    .mini-card{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;border:1px solid #e8edf5;background:#fff;border-radius:18px;padding:1rem;box-shadow:0 10px 26px rgba(15,23,42,.05)}
+    .mini-card h3{font-size:.96rem;color:var(--primary);margin-bottom:.1rem;line-height:1.15}
+    .mini-card p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.45}
+    .price{color:var(--primary);font-weight:950;text-align:right}
+
+    .section{padding:4.6rem 0}
+    .section.light{background:var(--bg);border-top:1px solid #edf2f7;border-bottom:1px solid #edf2f7}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:1.65rem}
+    .section-head.center{text-align:center;display:block;max-width:820px;margin:0 auto 1.8rem}
+    .section-head h2{color:var(--primary);font-size:clamp(2rem,3vw,3.1rem);line-height:1;letter-spacing:-.055em;font-weight:950;margin-top:.7rem}
+    .section-head p{color:var(--muted);max-width:700px;margin-top:.7rem;line-height:1.7}
+
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+    .card,.product-card{background:#fff;border:1px solid #e6edf6;border-radius:24px;padding:1.15rem;box-shadow:var(--shadow2)}
+    .card.highlight{background:radial-gradient(circle at 88% 0%,rgba(14,165,233,.10),transparent 32%),#fff;box-shadow:var(--shadow)}
+    .card h2,.card h3{color:var(--primary);letter-spacing:-.04em;line-height:1.1}
+    .card h2{font-size:2rem;margin:.8rem 0 .7rem}
+    .card h3{font-size:1.22rem;margin:.7rem 0 .45rem}
+    .card p{color:var(--muted);line-height:1.7}
+    .icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-weight:950;font-size:.95rem;flex:0 0 auto}
+    .icon.blue{background:var(--blue2);color:#0369a1}
+    .icon.green{background:#dcfce7;color:#047857}
+    .icon.purple{background:#ede9fe;color:#6d28d9}
+    .icon.orange{background:var(--orange2);color:#b45309}
+    .icon.red{background:var(--red2);color:#b91c1c}
+
+    .toolbar{position:sticky;top:76px;z-index:45;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #edf2f7;padding:1rem 0}
+    .toolbar-card{display:grid;grid-template-columns:1fr 180px 180px auto;gap:.75rem;align-items:center}
+    input,select,textarea,.input,.select{width:100%;border:1px solid #dbe4ef;border-radius:14px;padding:.92rem 1rem;background:#fff;outline:none;color:var(--ink);font-size:.95rem}
+    textarea{min-height:118px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:rgba(14,165,233,.55);box-shadow:0 0 0 4px rgba(14,165,233,.09)}
+    label{display:block;color:var(--primary);font-weight:850;font-size:.86rem;margin-bottom:.35rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+    .chip{border:1px solid #e2e8f0;background:#fff;color:#475569;padding:.58rem .78rem;border-radius:999px;font-weight:850;transition:.16s ease}
+    .chip.active,.chip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+    .market-layout{display:grid;grid-template-columns:280px 1fr;gap:1.4rem;align-items:start}
+    .sidebar{position:sticky;top:172px;background:#fff;border:1px solid #e6edf6;border-radius:22px;padding:1.1rem;box-shadow:var(--shadow2)}
+    .sidebar h3{color:var(--primary);font-size:1rem;margin-bottom:.7rem}
+    .side-group{border-top:1px solid #edf2f7;margin-top:1rem;padding-top:1rem}
+    .check{display:flex;gap:.6rem;color:#526174;font-weight:680;font-size:.9rem;margin:.7rem 0;align-items:flex-start}
+    .check input{width:auto;margin-top:.22rem;box-shadow:none}
+    .product-card{position:relative;overflow:hidden;transition:.18s ease;display:flex;flex-direction:column;min-height:385px}
+    .product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cfe0f5}
+    .product-card:before{content:"";position:absolute;right:-60px;top:-70px;width:150px;height:150px;border-radius:50%;background:rgba(14,165,233,.06)}
+    .product-top{position:relative;display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:.85rem}
+    .product-card h3{position:relative;color:var(--primary);font-size:1.18rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:.5rem}
+    .product-card p{position:relative;color:var(--muted);font-size:.92rem;margin-bottom:.9rem;line-height:1.55}
+    .meta-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:.9rem 0}
+    .meta{border:1px solid #edf2f7;background:#f8fafc;border-radius:14px;padding:.65rem}
+    .meta span{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;font-weight:950}
+    .meta strong{display:block;color:var(--primary);font-size:.87rem;margin-top:.15rem}
+    .card-actions{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:auto}
+
+    .dashboard-layout{display:grid;grid-template-columns:250px 1fr;gap:1.2rem;align-items:start}
+    .dash-nav{background:#fff;border:1px solid #e6edf6;border-radius:22px;padding:1rem;box-shadow:var(--shadow2);position:sticky;top:96px}
+    .dash-identity{background:radial-gradient(circle at 90% 0%,rgba(14,165,233,.12),transparent 38%),#f8fafc;border:1px solid #edf2f7;border-radius:18px;padding:1rem;margin-bottom:.75rem}
+    .dash-identity strong{display:block;color:var(--primary);font-size:1rem}
+    .dash-identity span{display:block;color:var(--muted);font-size:.84rem;margin-top:.2rem}
+    .dash-nav button{width:100%;text-align:left;border:0;background:transparent;padding:.8rem .85rem;border-radius:12px;color:#475569;font-weight:850;display:flex;justify-content:space-between;gap:.6rem;align-items:center}
+    .dash-nav button.active,.dash-nav button:hover{background:#eff6ff;color:#0369a1}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1rem}
+    .stat{background:#fff;border:1px solid #e6edf6;border-radius:20px;padding:1rem;box-shadow:var(--shadow2)}
+    .stat span{color:#94a3b8;font-weight:950;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em}
+    .stat strong{display:block;color:var(--primary);font-size:1.65rem;margin-top:.2rem;letter-spacing:-.04em}
+    .table-wrap{overflow:auto;border:1px solid #e6edf6;border-radius:20px;background:#fff;box-shadow:var(--shadow2)}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{padding:.95rem;border-bottom:1px solid #edf2f7;text-align:left;font-size:.9rem;vertical-align:top}
+    th{color:#64748b;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;background:#fbfdff}
+    td strong{color:var(--primary)}
+    tr:last-child td{border-bottom:0}
+    .activity{display:grid;gap:.7rem}
+    .activity-row{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:start;background:#f8fafc;border:1px solid #edf2f7;border-radius:18px;padding:.85rem}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--green);margin-top:.35rem}.dot.warn{background:var(--orange)}.dot.err{background:var(--red)}
+
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+    .choice-card{border:1px solid #e6edf6;background:#fff;border-radius:24px;padding:1.3rem;box-shadow:var(--shadow2);cursor:pointer;transition:.18s ease}
+    .choice-card:hover,.choice-card.selected{border-color:var(--blue);box-shadow:0 14px 30px rgba(14,165,233,.14)}
+    .choice-card h3{color:var(--primary);margin-bottom:.5rem}
+    .choice-card p{color:var(--muted);font-size:.94rem;line-height:1.6}
+
+    .modal-backdrop{position:fixed;inset:0;z-index:220;background:rgba(15,23,42,.62);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1rem}
+    .modal-backdrop.open{display:flex}
+    .modal{width:min(1200px,100%);max-height:92vh;overflow:hidden;background:#fff;border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.3);display:grid;grid-template-columns:.88fr 1.12fr}
+    .modal.single{display:block;width:min(760px,100%)}
+    .modal-side,.modal-main{padding:1.25rem;overflow:auto;max-height:92vh}
+    .modal-side{border-right:1px solid #edf2f7}
+    .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+    .modal h2{color:var(--primary);font-size:2rem;line-height:1;letter-spacing:-.04em;margin:.65rem 0}
+    .close{border:0;background:#f1f5f9;color:#334155;border-radius:12px;padding:.65rem .8rem;font-weight:900}
+    .info-block{border:1px solid #edf2f7;background:#f8fafc;border-radius:18px;padding:1rem;margin:1rem 0}
+    .info-block h4{color:var(--primary);font-size:.95rem;margin-bottom:.45rem}
+    .info-block p,.info-block li{color:#526174;font-size:.9rem;line-height:1.55}
+    ul.clean{padding-left:1.1rem}ul.clean li{margin:.35rem 0}
+    .price-box{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #dbeafe;border-radius:18px;padding:1rem;margin:1rem 0}
+    .price-box span{color:var(--muted);font-weight:850;font-size:.88rem}.price-box strong{display:block;color:var(--primary);font-size:1.65rem}
+    .modal-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.65rem;margin-top:1rem}
+
+    .preview-shell{border-radius:24px;background:#0f172a;padding:.85rem;color:#fff;box-shadow:var(--shadow);margin-bottom:1rem}
+    .browser-bar{height:34px;display:flex;align-items:center;gap:.4rem;padding:0 .45rem;color:#cbd5e1;font-size:.78rem;font-weight:850}
+    .browser-dot{width:9px;height:9px;border-radius:50%;background:#94a3b8}.browser-dot.red{background:#fb7185}.browser-dot.yellow{background:#fbbf24}.browser-dot.green{background:#34d399}
+    .preview-window{background:#fff;color:var(--ink);border-radius:18px;padding:1rem;min-height:380px}
+    .preview-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;border-bottom:1px solid #edf2f7;padding-bottom:.8rem;margin-bottom:.8rem}
+    .preview-header h3{color:var(--primary);line-height:1.1}.preview-header p{color:var(--muted);font-size:.86rem;margin-top:.25rem}
+    .preview-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.8rem 0}
+    .preview-kpi{background:#f8fafc;border:1px solid #edf2f7;border-radius:15px;padding:.75rem}
+    .preview-kpi span{display:block;color:#94a3b8;font-size:.7rem;text-transform:uppercase;font-weight:950}.preview-kpi strong{display:block;color:var(--primary);font-size:1.15rem}
+    .preview-row{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid #edf2f7;padding:.74rem 0;gap:1rem;font-size:.9rem}.preview-row strong{color:var(--primary)}
+    .preview-chat{display:grid;gap:.65rem}.bubble{padding:.75rem;border-radius:16px;max-width:90%;font-size:.9rem}.bubble.user{background:#eff6ff;color:#075985;justify-self:start}.bubble.bot{background:#ecfdf5;color:#065f46;justify-self:end}
+
+    footer{background:#0b1220;color:#cbd5e1;padding:2rem 0;margin-top:0}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}.footer-links{display:flex;gap:1rem;flex-wrap:wrap}.footer-links button{border:0;background:transparent;color:#cbd5e1;font-weight:750}.footer-links button:hover{color:#fff}
+    .toast{position:fixed;right:1rem;bottom:1rem;z-index:600;background:var(--primary);color:#fff;padding:.9rem 1rem;border-radius:14px;box-shadow:var(--shadow);display:none;font-weight:850;max-width:min(440px,calc(100vw - 2rem))}.toast.show{display:block}
+
+    @media(max-width:1080px){.hero-grid,.market-layout,.dashboard-layout,.modal{grid-template-columns:1fr}.modal-side{border-right:0;border-bottom:1px solid #edf2f7}.sidebar,.dash-nav{position:static}.grid{grid-template-columns:1fr 1fr}.grid-4,.stat-grid{grid-template-columns:1fr 1fr}.toolbar-card{grid-template-columns:1fr 1fr}.preview-kpis{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.nav{align-items:flex-start}.logo{font-size:1.35rem}.nav-links{gap:.35rem}.nav-link{padding:.55rem .55rem}.hero{padding:4rem 0 3.2rem}h1{font-size:2.55rem}.hero-actions,.modal-actions{grid-template-columns:1fr;flex-direction:column}.btn{width:100%}.toolbar{top:88px}.toolbar-card,.grid,.grid-2,.grid-4,.choice-grid,.form-grid,.stat-grid,.card-actions,.meta-grid,.preview-kpis{grid-template-columns:1fr}.mini-card{grid-template-columns:auto 1fr}.mini-card .price{grid-column:1/-1;text-align:left}.section-head{display:block}.market-layout{display:block}.sidebar{margin-bottom:1rem}.preview-header{display:block}.preview-row{grid-template-columns:1fr}.footer-row{display:block}.footer-links{margin-top:1rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <button class="logo" onclick="go('home')" aria-label="Go to Nexus AI home"><span class="logo-mark">N</span><span>Nexus</span><span>AI</span></button>
+      <nav class="nav-links" id="navLinks"></nav>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal">
+      <div class="modal-side" id="modalSide"></div>
+      <div class="modal-main" id="modalMain"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="questionModal">
+    <div class="modal single">
+      <div class="modal-main">
+        <div class="modal-head">
+          <div>
+            <span class="pill blue">Ask before buying</span>
+            <h2>Ask Nexus a question</h2>
+            <p class="muted">Questions are routed through Nexus first. Developers can be escalated when technical review is needed.</p>
+          </div>
+          <button class="close" onclick="closeQuestion()">Close</button>
+        </div>
+        <div class="form-grid">
+          <div><label>Your email</label><input id="questionEmail" placeholder="you@company.com"></div>
+          <div><label>Company</label><input id="questionCompany" placeholder="Company name"></div>
+          <div class="full"><label>Question</label><textarea id="questionText" placeholder="Ask about setup, integrations, customization, hosting, data privacy, or pricing..."></textarea></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="submitQuestion()">Send question</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const seedProducts = [
+      {
+        id:'social-listening', title:'Social Listening Intelligence', seller:'Nexus AI', category:'Marketing', type:'Monthly', basePrice:59, oneTimePrice:null,
+        rating:4.8, reviews:42, setup:'24-48 hours', complexity:'Easy', badge:'Popular', hostedBy:'Nexus-hosted', preview:'listening',
+        short:'Monitor brand health, sentiment, competitor moves, risks, and trends across reviews, social, news, and forums.',
+        description:'A Nexus-hosted social listening automation that tracks mentions, sentiment, topics, competitor signals, and emerging risks. Nexus manages the runtime, monitoring, logs, and deployment.',
+        who:['Brands monitoring reputation','PR teams tracking risk','Agencies reporting to clients','Marketing teams needing insights'],
+        does:['Tracks mentions across channels','Classifies sentiment and topics','Finds recurring complaints and praise','Creates leadership-ready summaries','Sends alerts and saves logs'],
+        how:['Buyer configures sources and rules','Nexus provisions the hosted workflow','Automation runs inside Nexus infrastructure','Outputs appear in the buyer dashboard'],
+        integrations:['Google Reviews','Facebook','Instagram','YouTube','CSV','Slack'],
+        credentials:['Google Business/Profile access or export','Social platform export/API access','Notification email'],
+        security:['Hosted by Nexus, not the developer','Credential vault planned for backend','Nexus audit logs and monitoring planned'],
+        support:'Nexus managed support with developer escalation only when needed.'
+      },
+      {
+        id:'social-reports', title:'AI Social Media Reports', seller:'Nexus AI', category:'Reporting', type:'Monthly', basePrice:69, oneTimePrice:null,
+        rating:4.9, reviews:36, setup:'24-48 hours', complexity:'Easy', badge:'Agency-ready', hostedBy:'Nexus-hosted', preview:'reports',
+        short:'Turn social performance data into clean reports with insights, ROI explanation, and next-step recommendations.',
+        description:'A Nexus-hosted reporting automation that transforms social metrics into professional reports. Nexus handles report generation, dashboards, logs, and customer delivery.',
+        who:['Agencies with client reporting','Marketing managers','Brands needing executive summaries','Teams tracking ROI'],
+        does:['Summarizes platform performance','Ranks best and worst content','Explains engagement changes','Creates recommendations','Generates client-ready reports'],
+        how:['Buyer connects or exports data','Nexus schedules report generation','AI creates report outputs','Buyer views outputs and logs in dashboard'],
+        integrations:['Facebook','Instagram','TikTok export','YouTube','Google Sheets','PDF'],
+        credentials:['Meta export/API access','Google Sheet link','Brand guidelines'],
+        security:['Hosted and monitored by Nexus','Reports logged in buyer dashboard','Backend report storage planned'],
+        support:'Nexus provides support and optional white-label setup.'
+      },
+      {
+        id:'chatbot', title:'AI Customer Support Chatbot', seller:'Nexus AI', category:'Customer Support', type:'Monthly + setup', basePrice:79, oneTimePrice:299,
+        rating:4.7, reviews:29, setup:'2-5 days', complexity:'Medium', badge:'24/7 support', hostedBy:'Nexus-hosted', preview:'chatbot',
+        short:'Answer FAQs, capture leads, route requests, and escalate complex issues while Nexus hosts the runtime.',
+        description:'A Nexus-hosted AI chatbot automation trained on a business knowledge base. Nexus hosts the bot runtime, monitors conversations, stores logs, and manages deployment.',
+        who:['Customer support teams','Tourism businesses','E-commerce stores','Service companies'],
+        does:['Answers FAQs 24/7','Captures leads and contact details','Routes complex cases','Creates support logs','Escalates to humans'],
+        how:['Buyer provides knowledge base','Nexus configures and hosts bot runtime','Bot is tested before launch','Outputs and conversations appear in dashboard'],
+        integrations:['Website widget','WhatsApp-ready','Zendesk-ready','Google Sheets','Email'],
+        credentials:['Knowledge base document','Support email','Optional WhatsApp/API keys'],
+        security:['Hosted by Nexus','Human escalation supported','Conversation logs visible to buyer'],
+        support:'Managed setup recommended for first deployment.'
+      },
+      {
+        id:'lead-gen', title:'AI Lead Generation Agent', seller:'Nexus AI Labs', category:'Sales', type:'Monthly', basePrice:99, oneTimePrice:null,
+        rating:4.6, reviews:18, setup:'2-4 days', complexity:'Medium', badge:'Sales', hostedBy:'Nexus-hosted', preview:'leads',
+        short:'Find, enrich, qualify, and prepare outreach-ready leads through a Nexus-hosted workflow.',
+        description:'A Nexus-hosted lead generation automation that finds, enriches, scores, and prepares lead outputs. Nexus controls the runtime layer and stores outputs in the buyer dashboard.',
+        who:['Sales teams','B2B services','Agencies','Corporate sales teams'],
+        does:['Finds target leads','Enriches company data','Scores fit','Creates outreach suggestions','Pushes leads to CRM or Sheets'],
+        how:['Buyer defines targeting rules','Nexus provisions hosted workflow','Automation creates lead outputs','Buyer reviews logs and outputs'],
+        integrations:['Apollo export','Google Sheets','HubSpot','Salesforce','Email'],
+        credentials:['CRM API key optional','Google Sheet access','Target criteria'],
+        security:['Nexus-hosted workflow','Credential storage planned','Run logs visible to buyer'],
+        support:'Nexus managed setup available.'
+      },
+      {
+        id:'invoice-agent', title:'Invoice Processing Automation', seller:'FinOps Builder', category:'Finance', type:'One-time', basePrice:0, oneTimePrice:499,
+        rating:4.5, reviews:9, setup:'3-7 days', complexity:'Advanced', badge:'Nexus reviewed', hostedBy:'Nexus-hosted after review', preview:'invoice',
+        short:'Extract invoice data, validate fields, and send structured outputs to finance tools.',
+        description:'A developer-submitted automation that Nexus reviews, packages, and hosts. Buyers never run developer code directly. Nexus controls deployment, monitoring, credentials, and logs.',
+        who:['Finance teams','Operations teams','Businesses with manual invoice entry'],
+        does:['Extracts invoice fields','Validates totals and vendors','Flags missing data','Exports structured records'],
+        how:['Developer submits automation package','Nexus reviews and hosts it','Buyer configures finance workflow','Outputs appear in buyer dashboard'],
+        integrations:['Email inbox','Google Drive','QuickBooks-ready','CSV','Webhook'],
+        credentials:['Inbox or file folder access','Output destination','Approval rules'],
+        security:['Developer code reviewed by Nexus','Runtime hosted by Nexus','Customer credentials controlled by Nexus vault later'],
+        support:'Nexus support first, developer escalation second.'
+      },
+      {
+        id:'review-radar', title:'Review Response Radar', seller:'Reputation Studio', category:'Operations', type:'Monthly', basePrice:49, oneTimePrice:null,
+        rating:4.4, reviews:14, setup:'1-2 days', complexity:'Easy', badge:'Fast setup', hostedBy:'Nexus-hosted after review', preview:'listening',
+        short:'Track new customer reviews, draft replies, detect urgent issues, and export manager summaries.',
+        description:'A lightweight hosted workflow for review monitoring and response drafting. Nexus hosts and monitors the workflow after review.',
+        who:['Hospitality teams','Local businesses','Marketing agencies'],
+        does:['Tracks new reviews','Drafts professional responses','Flags urgent complaints','Creates weekly summaries'],
+        how:['Connect review source','Choose tone and escalation rules','Nexus runs the workflow','Review outputs in dashboard'],
+        integrations:['Google Reviews','Tripadvisor export','Email','Slack','Google Sheets'],
+        credentials:['Review source access','Notification rules','Brand tone notes'],
+        security:['Nexus-hosted after review','Access restricted by buyer workspace','Logs visible to buyer'],
+        support:'Nexus first-line support with seller escalation.'
+      }
+    ];
+
+    const businessSeed = {
+      automations:[
+        {id:'a1',name:'Social Listening Intelligence',status:'Active',team:'Marketing',health:'Healthy',price:'$59/mo',runs:82,outputs:1284,last:'12 min ago',next:'18:00 today',integration:'Google Reviews + Slack',desc:'Tracks brand mentions, sentiment, complaints, competitor signals, and topic trends.'},
+        {id:'a2',name:'AI Social Media Reports',status:'Active',team:'Marketing',health:'Healthy',price:'$69/mo',runs:18,outputs:24,last:'2h ago',next:'Friday 09:00',integration:'Sheets + PDF',desc:'Creates social performance reports, summaries, weak points, and recommendations.'},
+        {id:'a3',name:'Customer Support Chatbot',status:'Setup',team:'Support',health:'Needs info',price:'$79/mo + setup',runs:0,outputs:0,last:'Not live',next:'Waiting setup',integration:'Website + WhatsApp',desc:'Answers customer questions, captures leads, and escalates complex support cases.'},
+        {id:'a4',name:'Lead Generation Agent',status:'Paused',team:'Sales',health:'Paused',price:'$99/mo',runs:31,outputs:356,last:'2 days ago',next:'Paused',integration:'HubSpot + Sheets',desc:'Finds, enriches, scores, and exports outreach-ready business leads.'}
+      ],
+      outputs:[
+        {id:'o1',title:'Brand sentiment improved by 8%',automation:'Social Listening Intelligence',type:'Insight report',status:'Ready',date:'Today 14:10',summary:'Positive mentions increased after campaign. Complaints mainly mention queue time.'},
+        {id:'o2',title:'Weekly social performance report',automation:'AI Social Media Reports',type:'PDF report',status:'Ready',date:'Today 09:00',summary:'Reach increased 14%. Short video performed best. CTA clicks remain weak.'},
+        {id:'o3',title:'42 qualified leads exported',automation:'Lead Generation Agent',type:'Lead export',status:'Ready',date:'2 days ago',summary:'12 high-fit companies flagged for priority outreach.'}
+      ],
+      tasks:[
+        {id:'t1',title:'Upload chatbot knowledge base',automation:'Customer Support Chatbot',status:'Required',due:'Before launch'},
+        {id:'t2',title:'Add escalation email',automation:'Customer Support Chatbot',status:'Required',due:'Before launch'},
+        {id:'t3',title:'Update HubSpot API key',automation:'Lead Generation Agent',status:'Blocking',due:'Now'},
+        {id:'t4',title:'Approve report template',automation:'AI Social Media Reports',status:'Optional',due:'This week'}
+      ],
+      credentials:[
+        {id:'c1',name:'Google Reviews access',automation:'Social Listening Intelligence',status:'Connected',updated:'3 days ago'},
+        {id:'c2',name:'Slack webhook',automation:'Social Listening Intelligence',status:'Connected',updated:'1 week ago'},
+        {id:'c3',name:'HubSpot API key',automation:'Lead Generation Agent',status:'Expired',updated:'2 days ago'},
+        {id:'c4',name:'Website widget token',automation:'Customer Support Chatbot',status:'Missing',updated:'Never'}
+      ],
+      logs:[
+        {level:'ok',title:'Social Listening run completed',detail:'1,284 mentions analyzed. 7 alerts generated.',time:'12 min ago'},
+        {level:'ok',title:'Report generated',detail:'Weekly social performance PDF created.',time:'2h ago'},
+        {level:'warn',title:'Chatbot setup incomplete',detail:'Knowledge base and escalation email required.',time:'5h ago'},
+        {level:'err',title:'Lead sync failed',detail:'HubSpot API key expired.',time:'2 days ago'}
+      ]
+    };
+
+    const state = {
+      route:'home', user:null, activeRole:null, selectedProduct:null, setupType:null, checkoutItem:null,
+      customize:{industry:'General', volume:'Standard', tone:'Professional', integration:'Google Sheets', enrichment:true},
+      filters:{search:'', category:'All', pricing:'All'},
+      dashTab:{buyer:'overview', developer:'overview', admin:'overview'}
+    };
+
+    function defaultStore(){
+      return {
+        products: seedProducts,
+        orders: [],
+        questions: [],
+        contacts: [],
+        submissions: [
+          {id:'demo-sub-1', seller:'Automation Studio', title:'CRM Enrichment Automation', category:'Sales', type:'Monthly', monthlyPrice:129, oneTimePrice:399, complexity:'Medium', short:'Enrich CRM records, score companies, and flag duplicates.', description:'Developer-submitted CRM enrichment workflow for Nexus hosting review.', integrations:'HubSpot, Salesforce, Google Sheets', credentials:'CRM API key, field mapping', runtime:'Node/Python worker, scheduled enrichment, CRM API calls, structured output schema.', security:'Customer credentials must stay in Nexus vault. Vendor APIs required.', support:'Developer assists Nexus with schema and bug fixes.', setup:'Nexus review + 3-7 days', status:'pending', createdAt:'Demo'}
+        ],
+        business: JSON.parse(JSON.stringify(businessSeed)),
+        users:{
+          buyer:{id:'buyer-demo', name:'Demo Buyer', company:'Example Business', role:'buyer', email:'buyer@nexus-demo.com'},
+          developer:{id:'developer-demo', name:'Demo Developer', company:'Automation Studio', role:'developer', email:'developer@nexus-demo.com'},
+          admin:{id:'admin-demo', name:'Nexus Admin', company:'Nexus AI', role:'admin', email:'admin@nexus-demo.com'}
+        }
+      };
+    }
+    function getStore(){
+      const raw = localStorage.getItem('nexus_master_store');
+      if(raw){
+        try{return JSON.parse(raw)}catch(e){}
+      }
+      const store = defaultStore();
+      localStorage.setItem('nexus_master_store', JSON.stringify(store));
+      return store;
+    }
+    function saveStore(store){localStorage.setItem('nexus_master_store', JSON.stringify(store))}
+    function resetDemo(){localStorage.removeItem('nexus_master_store'); state.user=null; state.activeRole=null; state.route='home'; toast('Demo data reset'); render()}
+
+    function allProducts(){
+      const store = getStore();
+      const approved = store.submissions.filter(x=>x.status==='approved').map(x=>({
+        id:x.id,
+        title:x.title,
+        seller:x.seller || 'Marketplace Developer',
+        category:x.category,
+        type:x.type,
+        basePrice:Number(x.monthlyPrice || 0),
+        oneTimePrice:x.oneTimePrice ? Number(x.oneTimePrice) : null,
+        rating:4.3,
+        reviews:0,
+        setup:x.setup || 'Nexus review + 3-7 days',
+        complexity:x.complexity || 'Medium',
+        badge:'Nexus-hosted seller listing',
+        hostedBy:'Nexus-hosted after review',
+        short:x.short || String(x.description || '').slice(0,120),
+        description:x.description || 'Developer-submitted hosted workflow.',
+        who:['Businesses looking for this hosted workflow','Teams needing automation without running infrastructure'],
+        does:[x.useCase || 'Automates a business process','Runs inside Nexus infrastructure','Creates outputs in dashboard'],
+        how:['Developer submits code/specification to Nexus','Nexus reviews, packages, and hosts it','Buyer configures requirements','Nexus runtime executes and logs output'],
+        integrations:x.integrations ? x.integrations.split(',').map(a=>a.trim()).filter(Boolean) : ['API','Google Sheets'],
+        credentials:x.credentials ? x.credentials.split(',').map(a=>a.trim()).filter(Boolean) : ['API key','Business rules'],
+        security:['Hosted by Nexus, not developer infrastructure','Nexus controls deployment and monitoring','Credential vault planned in backend'],
+        support:x.support || 'Nexus support first, developer escalation second.',
+        preview:'seller'
+      }));
+      return [...store.products, ...approved];
+    }
+
+    function money(n){return '$' + Number(n || 0).toLocaleString()}
+    function pricingText(p){
+      if(p.type==='Monthly') return money(p.basePrice) + '/mo';
+      if(p.type==='One-time') return money(p.oneTimePrice) + ' once';
+      return money(p.basePrice) + '/mo + ' + money(p.oneTimePrice) + ' setup';
+    }
+    function estimatePrice(p){
+      let monthly = Number(p.basePrice || 0), one = Number(p.oneTimePrice || 0);
+      if(state.customize.volume==='High') monthly += 40;
+      if(state.customize.volume==='Enterprise') monthly += 120;
+      if(state.customize.enrichment) monthly += 15;
+      return {monthly, oneTime:one};
+    }
+    function iconColor(category){
+      if(String(category).includes('Marketing') || String(category).includes('Reporting')) return 'blue';
+      if(String(category).includes('Sales')) return 'green';
+      if(String(category).includes('Support')) return 'purple';
+      if(String(category).includes('Finance')) return 'orange';
+      return 'blue';
+    }
+    function initials(title){return title.split(' ').filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+    function statusPill(status){
+      const s = String(status || '').toLowerCase();
+      const color = s.includes('active') || s.includes('ready') || s.includes('connected') || s.includes('approved') ? 'green' : s.includes('block') || s.includes('expired') || s.includes('missing') || s.includes('reject') ? 'red' : s.includes('pending') || s.includes('required') || s.includes('setup') || s.includes('review') ? 'orange' : 'blue';
+      return `<span class="pill ${color}">${status}</span>`;
+    }
+    function val(id){return (document.getElementById(id)?.value || '').trim()}
+    function toast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+
+    function routeForRole(role){return role==='buyer' ? 'buyerDashboard' : role==='developer' ? 'developerDashboard' : 'adminDashboard'}
+    function login(role){const s=getStore();state.user=s.users[role];state.activeRole=role;toast('Logged in as ' + role);go(routeForRole(role))}
+    function logout(){state.user=null;state.activeRole=null;toast('Logged out');go('home')}
+    function go(route){state.route=route;window.scrollTo(0,0);render()}
+    function dashboardRoute(){state.user ? go(routeForRole(state.activeRole)) : go('login')}
+
+    function renderNav(){
+      const links = [
+        ['home','Home'],['marketplace','Marketplace'],['about','About'],['contact','Contact'],['pricing','Pricing']
+      ];
+      const active = state.route;
+      const session = state.user
+        ? `<button class="nav-link ${active.includes('Dashboard')?'active':''}" onclick="dashboardRoute()">Dashboard</button><button class="btn btn-soft btn-small" onclick="logout()">Logout</button>`
+        : `<button class="btn btn-primary btn-small" onclick="go('login')">Demo Login</button>`;
+      document.getElementById('navLinks').innerHTML = links.map(([r,label])=>`<button class="nav-link ${active===r?'active':''}" onclick="go('${r}')">${label}</button>`).join('') + session;
+    }
+    function render(){
+      renderNav();
+      const pages = {home:Home, marketplace:Marketplace, about:About, contact:Contact, pricing:Pricing, login:Login, setupChoice:SetupChoice, checkout:Checkout, finalSetup:FinalSetup, buyerDashboard:BuyerDashboard, developerDashboard:DeveloperDashboard, adminDashboard:AdminDashboard};
+      document.getElementById('app').innerHTML = (pages[state.route] || Home)() + Footer();
+    }
+
+    function Footer(){return `<footer><div class="container footer-row"><div><strong>Nexus AI</strong><br><span>Hosted automation marketplace demo.</span></div><div class="footer-links"><button onclick="go('home')">Home</button><button onclick="go('marketplace')">Marketplace</button><button onclick="go('about')">About</button><button onclick="go('contact')">Contact</button><button onclick="resetDemo()">Reset demo</button></div></div></footer>`}
+
+    function Home(){
+      const products = allProducts();
+      return `<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">Nexus-hosted automation marketplace</span><h1>The marketplace for business-ready <span>AI automations.</span></h1><p>Browse, preview, buy, and deploy hosted AI automations. Developers submit automations to Nexus, while Nexus hosts the runtime, manages deployment, stores logs, and controls the customer experience.</p><div class="hero-actions"><button class="btn btn-primary" onclick="go('marketplace')">Explore Marketplace</button><button class="btn btn-ghost" onclick="go('login')">Open Demo Login</button></div><div class="trust-row"><span>Nexus-hosted runtime</span><span>Self-serve or managed install</span><span>Buyer dashboard logs</span><span>Developer submissions reviewed</span></div></div><div class="hero-panel"><div class="panel-top"><div>Hosted marketplace preview</div><span class="pill green">${products.length} workflows</span></div><div class="mini-stack">${products.slice(0,4).map(p=>`<div class="mini-card"><div class="icon ${iconColor(p.category)}">${initials(p.title)}</div><div><h3>${p.title}</h3><p>${p.short}</p></div><div class="price">${pricingText(p)}</div></div>`).join('')}</div></div></div></section>
+      <section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">How Nexus works</span><h2>Developers build. Nexus hosts. Businesses deploy.</h2><p>The seller/developer does not host customer automations. Developers submit automation packages and technical requirements; Nexus reviews, hosts, monitors, and manages the buyer-facing runtime.</p></div><button class="btn btn-primary" onclick="go('marketplace')">Browse tools</button></div><div class="grid">${[['1','Browse','Buyers browse hosted automations by outcome, price, category, and integration.'],['2','Preview','Every product popup includes details, customization, and a visible workflow preview.'],['3','Buy','Buyer chooses self-serve or Nexus managed installation.'],['4','Deploy','Nexus collects setup information and provisions the workflow.'],['5','Monitor','Buyer sees logs, outputs, credentials, and status.'],['6','Submit','Developers submit listings and hosting packages for Nexus review.']].map(x=>`<div class="card"><span class="pill blue">${x[0]}</span><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('')}</div></div></section>
+      <section class="section light"><div class="container"><div class="section-head"><div><span class="eyebrow">Featured hosted automations</span><h2>Start with ready workflows.</h2></div><button class="btn btn-primary" onclick="go('marketplace')">Browse all</button></div><div class="grid">${products.slice(0,3).map(ProductCard).join('')}</div></div></section>
+      <section class="section"><div class="container grid-2"><div class="card highlight"><span class="pill green">For businesses</span><h2>One place to find, customize, and run useful AI.</h2><p>Businesses can compare automations before buying, see what credentials are required, choose setup support, and monitor every run after launch.</p><div class="tag-row"><span class="tag">Outputs</span><span class="tag">Logs</span><span class="tag">Credentials</span><span class="tag">Setup tasks</span></div></div><div class="card highlight"><span class="pill purple">For developers</span><h2>Package automations into marketplace products.</h2><p>Developers can submit workflows, runtime notes, schemas, integrations, and support notes. Nexus reviews, hosts, and routes buyer support.</p><div class="tag-row"><span class="tag">Listings</span><span class="tag">Review queue</span><span class="tag">Installs</span><span class="tag">Payouts</span></div></div></div></section>
+      <section class="section light"><div class="container"><div class="section-head center"><span class="eyebrow">Launch-ready structure</span><h2>All key pages are now in one website.</h2><p>This master file includes home, marketplace, about, contact, pricing, login, product detail modals, checkout/setup flow, business dashboard, developer dashboard, and admin review dashboard.</p></div><div class="grid-4">${[['Home','High-converting hero, workflow explanation, featured products.'],['Marketplace','Search, filter, preview, ask, and buy hosted automations.'],['Dashboards','Buyer, developer, and admin workspaces with demo data.'],['Contact/Login','Lead capture, role login, and submission flows.']].map(x=>`<div class="card"><div class="icon blue">${x[0][0]}</div><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div></div></section>`;
+    }
+
+    function filteredProducts(){
+      const q = state.filters.search.toLowerCase();
+      return allProducts().filter(p =>
+        (!q || [p.title,p.short,p.description,p.category,p.seller,...p.integrations].join(' ').toLowerCase().includes(q)) &&
+        (state.filters.category==='All' || p.category===state.filters.category) &&
+        (state.filters.pricing==='All' || p.type===state.filters.pricing)
+      );
+    }
+    function Marketplace(){
+      const cats = ['All', ...new Set(allProducts().map(p=>p.category))];
+      const products = filteredProducts();
+      return `<section class="hero" style="padding:3.8rem 0 2.6rem"><div class="container"><span class="eyebrow">Nexus AI Marketplace</span><h1 style="max-width:920px">Find a hosted automation your business can deploy.</h1><p style="max-width:760px;color:var(--muted);font-size:1.1rem">Click a product to open the full popup with details, preview, configuration, ask Nexus/developer, and buy/deploy flow.</p></div></section><div class="toolbar"><div class="container"><div class="toolbar-card"><input placeholder="Search automations, integrations, use cases..." value="${state.filters.search}" oninput="setSearch(this.value)"><select onchange="setPricing(this.value)">${['All','Monthly','One-time','Monthly + setup'].map(x=>`<option ${state.filters.pricing===x?'selected':''}>${x}</option>`).join('')}</select><select onchange="setSort(this.value)"><option>Recommended</option><option>Highest rated</option><option>Lowest price</option><option>Fastest setup</option></select><button class="btn btn-dark" onclick="go('developerDashboard')">Submit automation</button></div><div class="chips">${cats.map(c=>`<button class="chip ${state.filters.category===c?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join('')}</div></div></div><section class="section"><div class="container market-layout"><aside class="sidebar"><h3>Marketplace rules</h3><label class="check"><input type="checkbox" checked> Automations hosted by Nexus</label><label class="check"><input type="checkbox" checked> Developers submit; Nexus reviews</label><label class="check"><input type="checkbox" checked> Buyers never run developer code directly</label><label class="check"><input type="checkbox" checked> Logs and outputs live in dashboard</label><div class="side-group"><h3>Buyer flow</h3><p class="muted" style="font-size:.9rem">Product popup -> preview -> ask or buy -> setup choice -> checkout -> setup form -> dashboard.</p></div></aside><div><div class="section-head" style="margin-bottom:1rem"><div><h2>${products.length} hosted automations</h2><p>Search and compare ready-made automations.</p></div><button class="btn btn-soft" onclick="clearFilters()">Clear filters</button></div><div class="grid">${products.map(ProductCard).join('') || EmptyState('No automations found','Try a different search or clear the filters.')}</div></div></div></section>`;
+    }
+    function EmptyState(title, copy){return `<div class="card" style="grid-column:1/-1;text-align:center;padding:2rem"><h3>${title}</h3><p>${copy}</p></div>`}
+    function ProductCard(p){
+      return `<div class="product-card" onclick="openProduct('${p.id}')"><div class="product-top"><div class="icon ${iconColor(p.category)}">${initials(p.title)}</div><span class="pill ${p.badge.includes('Popular')?'green':p.badge.includes('Nexus')?'purple':'orange'}">${p.badge}</span></div><h3>${p.title}</h3><p>${p.short}</p><div class="meta-grid"><div class="meta"><span>Price</span><strong>${pricingText(p)}</strong></div><div class="meta"><span>Hosted by</span><strong>Nexus</strong></div><div class="meta"><span>Rating</span><strong>★ ${p.rating}</strong></div><div class="meta"><span>Setup</span><strong>${p.setup}</strong></div></div><div class="tags">${p.integrations.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="card-actions"><button class="btn btn-primary btn-small" onclick="event.stopPropagation();openProduct('${p.id}')">View popup</button><button class="btn btn-ghost btn-small" onclick="event.stopPropagation();quickBuy('${p.id}')">Buy</button></div></div>`;
+    }
+    function setSearch(v){state.filters.search=v;render()}
+    function setCategory(v){state.filters.category=v;render()}
+    function setPricing(v){state.filters.pricing=v;render()}
+    function setSort(v){toast('Demo sort set to ' + v)}
+    function clearFilters(){state.filters={search:'',category:'All',pricing:'All'};render()}
+
+    function openProduct(id){state.selectedProduct=allProducts().find(x=>x.id===id);renderProductModal();document.getElementById('productModal').classList.add('open')}
+    function closeProduct(){document.getElementById('productModal').classList.remove('open')}
+    function renderProductModal(){
+      const p=state.selectedProduct; if(!p) return;
+      const est=estimatePrice(p);
+      document.getElementById('modalSide').innerHTML = `<div class="modal-head"><div><span class="pill blue">${p.category}</span> <span class="pill green">★ ${p.rating} (${p.reviews})</span> <span class="pill purple">Nexus-hosted</span><h2>${p.title}</h2><p class="muted">${p.description}</p></div><button class="close" onclick="closeProduct()">Close</button></div><div class="price-box"><span>Estimated configured price</span><strong>${est.monthly ? money(est.monthly) + '/mo' : ''}${est.oneTime ? (est.monthly ? ' + ' : '') + money(est.oneTime) + ' setup/once' : ''}</strong></div>${InfoBlock('Who it is for',p.who)}${InfoBlock('What it does',p.does)}${InfoBlock('How Nexus deploys it',p.how)}${InfoBlock('Credentials needed',p.credentials)}${InfoBlock('Security model',p.security)}<div class="info-block"><h4>Support</h4><p>${p.support}</p></div>`;
+      document.getElementById('modalMain').innerHTML = `<div class="preview-shell"><div class="browser-bar"><span class="browser-dot red"></span><span class="browser-dot yellow"></span><span class="browser-dot green"></span><span>nexus.ai / hosted preview</span></div><div class="preview-window">${ProductPreview(p)}</div></div><div class="card"><h3>Customize before buying</h3><div class="form-grid"><div><label>Industry</label><select onchange="state.customize.industry=this.value;renderProductModal()"><option ${state.customize.industry==='General'?'selected':''}>General</option><option ${state.customize.industry==='Hospitality'?'selected':''}>Hospitality</option><option ${state.customize.industry==='E-commerce'?'selected':''}>E-commerce</option><option ${state.customize.industry==='B2B Services'?'selected':''}>B2B Services</option><option ${state.customize.industry==='Finance'?'selected':''}>Finance</option></select></div><div><label>Volume</label><select onchange="state.customize.volume=this.value;renderProductModal()"><option ${state.customize.volume==='Standard'?'selected':''}>Standard</option><option ${state.customize.volume==='High'?'selected':''}>High</option><option ${state.customize.volume==='Enterprise'?'selected':''}>Enterprise</option></select></div><div><label>Tone</label><select onchange="state.customize.tone=this.value;renderProductModal()"><option ${state.customize.tone==='Professional'?'selected':''}>Professional</option><option ${state.customize.tone==='Friendly'?'selected':''}>Friendly</option><option ${state.customize.tone==='Executive'?'selected':''}>Executive</option></select></div><div><label>Main integration</label><select onchange="state.customize.integration=this.value;renderProductModal()">${p.integrations.map(x=>`<option ${state.customize.integration===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="full"><label class="check"><input type="checkbox" ${state.customize.enrichment?'checked':''} onchange="state.customize.enrichment=this.checked;renderProductModal()"> Add enriched summaries and recommendations (+$15/mo)</label></div></div><div class="modal-actions"><button class="btn btn-primary" onclick="buySelected()">Buy / deploy</button><button class="btn btn-ghost" onclick="openQuestion()">Ask Nexus</button><button class="btn btn-soft" onclick="toast('Added to comparison')">Compare</button></div></div>`;
+    }
+    function InfoBlock(title, items){return `<div class="info-block"><h4>${title}</h4><ul class="clean">${items.map(x=>`<li>${x}</li>`).join('')}</ul></div>`}
+    function ProductPreview(p){
+      const c=state.customize;
+      const rows = {
+        listening:[['Mentions tracked','1,284'],['Sentiment shift','+8% positive'],['Top risk','Queue time complaints'],['Alert channel',c.integration]],
+        reports:[['Reach change','+14%'],['Best content','Short video'],['Weak point','CTA clicks'],['Output','PDF + dashboard']],
+        chatbot:[['Knowledge base','Ready check'],['Escalations','Support email'],['Captured leads','18/week est.'],['Channel',c.integration]],
+        leads:[['Target profile',c.industry],['Lead score','High fit'],['Export','CRM + Sheets'],['Estimated leads','42/week']],
+        invoice:[['Invoices read','86/month est.'],['Validation','Totals + vendor'],['Exceptions','7 flagged'],['Output',c.integration]],
+        seller:[['Review status','Nexus hosting'],['Runtime','Packaged worker'],['Output schema','Required'],['Support','Developer escalation']]
+      }[p.preview] || [['Workflow','Hosted'],['Status','Preview'],['Output','Dashboard'],['Integration',c.integration]];
+      const chat = p.preview==='chatbot' ? `<div class="preview-chat"><div class="bubble user">Do you offer support after 6pm?</div><div class="bubble bot">Yes. I can help with common questions and send urgent cases to the support team.</div></div>` : '';
+      return `<div class="preview-header"><div><h3>${p.title}</h3><p>${c.industry} setup • ${c.tone} tone • ${c.volume} volume</p></div><span class="pill green">Live preview</span></div><div class="preview-kpis">${rows.slice(0,3).map(r=>`<div class="preview-kpi"><span>${r[0]}</span><strong>${r[1]}</strong></div>`).join('')}</div>${rows.map(r=>`<div class="preview-row"><strong>${r[0]}</strong><span>${r[1]}</span></div>`).join('')}${chat}`;
+    }
+    function quickBuy(id){state.selectedProduct=allProducts().find(x=>x.id===id);buySelected()}
+    function buySelected(){state.checkoutItem=state.selectedProduct;closeProduct();state.setupType=null;go('setupChoice')}
+    function openQuestion(){closeProduct();document.getElementById('questionModal').classList.add('open')}
+    function closeQuestion(){document.getElementById('questionModal').classList.remove('open')}
+    function submitQuestion(){
+      const store=getStore();
+      store.questions.push({id:'q-'+Date.now(), productId:state.selectedProduct?.id || 'general', productTitle:state.selectedProduct?.title || 'General inquiry', email:val('questionEmail') || 'unknown@email.com', company:val('questionCompany') || 'Unknown company', question:val('questionText') || 'No question entered.', createdAt:new Date().toLocaleString()});
+      saveStore(store); closeQuestion(); toast('Question sent to Nexus');
+    }
+
+    function SetupChoice(){
+      const p = state.checkoutItem || allProducts()[0];
+      return `<section class="section"><div class="container" style="max-width:980px"><span class="eyebrow">Setup choice</span><h1 style="font-size:3.5rem">Choose how to deploy ${p.title}.</h1><p class="muted" style="font-size:1.08rem;max-width:780px">Nexus can provision the workflow for you or let your team complete a guided setup. Both paths are hosted and monitored by Nexus.</p><div class="choice-grid"><div class="choice-card ${state.setupType==='Self-serve'?'selected':''}" onclick="state.setupType='Self-serve';render()"><span class="pill green">Fastest</span><h3>Self-serve setup</h3><p>Use guided forms, connect your accounts, and launch with Nexus checks.</p><div class="price-box"><span>Setup fee</span><strong>$0</strong></div></div><div class="choice-card ${state.setupType==='Managed install'?'selected':''}" onclick="state.setupType='Managed install';render()"><span class="pill blue">Recommended</span><h3>Nexus managed install</h3><p>Nexus handles configuration, testing, deployment, and first-run validation.</p><div class="price-box"><span>Setup fee</span><strong>From $199</strong></div></div></div><button class="btn btn-primary" ${!state.setupType?'disabled':''} onclick="go('checkout')">Continue to checkout</button> <button class="btn btn-ghost" onclick="go('marketplace')">Back to marketplace</button></div></section>`;
+    }
+    function Checkout(){
+      const p=state.checkoutItem || allProducts()[0]; const est=estimatePrice(p);
+      return `<section class="section"><div class="container grid-2"><div><span class="eyebrow">Demo checkout</span><h1 style="font-size:3.5rem">Review and confirm your hosted automation.</h1><p class="muted">This is a front-end demo. Stripe or another payment provider can be connected later.</p><div class="card"><h3>${p.title}</h3><p>${p.short}</p><div class="meta-grid"><div class="meta"><span>Plan</span><strong>${pricingText(p)}</strong></div><div class="meta"><span>Setup</span><strong>${state.setupType || 'Self-serve'}</strong></div><div class="meta"><span>Monthly est.</span><strong>${est.monthly ? money(est.monthly) : '$0'}</strong></div><div class="meta"><span>One-time est.</span><strong>${est.oneTime ? money(est.oneTime) : '$0'}</strong></div></div></div></div><div class="card"><h3>Buyer information</h3><div class="form-grid"><div><label>Name</label><input id="buyerName" value="${state.user?.name || ''}" placeholder="Your name"></div><div><label>Email</label><input id="buyerEmail" value="${state.user?.email || ''}" placeholder="you@company.com"></div><div class="full"><label>Company</label><input id="buyerCompany" value="${state.user?.company || ''}" placeholder="Company name"></div><div class="full"><label>Notes for Nexus</label><textarea id="buyerNotes" placeholder="Anything Nexus should know before setup?"></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="confirmCheckout()">Confirm demo purchase</button></div></div></section>`;
+    }
+    function confirmCheckout(){
+      const p=state.checkoutItem || allProducts()[0]; const est=estimatePrice(p); const store=getStore();
+      const order={id:'ord-'+Date.now(), productId:p.id, productTitle:p.title, status:'Setup required', setupType:state.setupType || 'Self-serve', priceMonthly:est.monthly, priceOneTime:est.oneTime, buyerName:val('buyerName') || state.user?.name || 'Demo Buyer', email:val('buyerEmail') || state.user?.email || 'buyer@nexus-demo.com', company:val('buyerCompany') || state.user?.company || 'Example Business', notes:val('buyerNotes'), config:{...state.customize}, createdAt:new Date().toLocaleString()};
+      store.orders.unshift(order);
+      store.business.automations.unshift({id:order.id,name:p.title,status:'Setup',team:p.category,health:'Needs setup',price:pricingText(p),runs:0,outputs:0,last:'Not live',next:'Waiting setup',integration:state.customize.integration,desc:p.short});
+      store.business.tasks.unshift({id:'task-'+Date.now(),title:'Complete setup for '+p.title,automation:p.title,status:'Required',due:'Before launch'});
+      saveStore(store);
+      if(!state.user){state.user=store.users.buyer;state.activeRole='buyer'}
+      go('finalSetup');
+    }
+    function FinalSetup(){
+      const p=state.checkoutItem || allProducts()[0];
+      return `<section class="section"><div class="container" style="max-width:900px"><span class="eyebrow">Final setup</span><h1 style="font-size:3.5rem">Send Nexus the setup details.</h1><p class="muted">These details will appear as setup tasks inside the buyer dashboard.</p><div class="card"><div class="form-grid"><div><label>Main data source</label><input id="setupSource" placeholder="Google Sheet, CRM, website, social account..."></div><div><label>Notification email</label><input id="setupEmail" placeholder="ops@company.com"></div><div class="full"><label>Access / credential notes</label><textarea id="setupCreds" placeholder="Do not paste real secrets in this demo. Add notes for what Nexus needs."></textarea></div><div class="full"><label>Business rules</label><textarea id="setupRules" placeholder="Escalation rules, report schedule, target customers, brand tone..."></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="completeSetup()">Submit setup details</button> <button class="btn btn-ghost" onclick="go('buyerDashboard')">Skip to dashboard</button></div><div class="card" style="margin-top:1rem"><h3>${p.title}</h3><p>${p.short}</p></div></div></section>`;
+    }
+    function completeSetup(){
+      const store=getStore();
+      store.business.logs.unshift({level:'ok',title:'Setup details submitted',detail:'Nexus received setup source, credential notes, and rules.',time:'Just now'});
+      saveStore(store); toast('Setup submitted'); go('buyerDashboard');
+    }
+
+    function Login(){
+      return `<section class="section"><div class="container"><div class="section-head center"><span class="eyebrow">Demo login</span><h1 style="font-size:3.6rem">Choose a workspace.</h1><p>Use these demo roles to explore the business dashboard, developer dashboard, and Nexus admin review workspace.</p></div><div class="grid">${[['buyer','Business Buyer','Manage purchases, setup tasks, credentials, outputs, logs, and billing.','B','green'],['developer','Developer / Seller','Submit automations, manage listings, answer questions, and track installs.','D','purple'],['admin','Nexus Admin','Review developer submissions, buyer questions, orders, and marketplace status.','A','blue']].map(x=>`<div class="card highlight"><div class="icon ${x[4]}">${x[3]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class="btn btn-primary" onclick="login('${x[0]}')">Login as ${x[1]}</button></div>`).join('')}</div></div></section>`;
+    }
+
+    function About(){
+      return `<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">About Nexus AI</span><h1>Business automation, <span>ready when you are.</span></h1><p>Nexus AI helps businesses discover and launch practical AI automations without starting from zero. Instead of figuring out every tool, workflow, integration, and setup step alone, teams can find ready-made solutions and move faster.</p><div class="hero-actions"><button class="btn btn-primary" onclick="go('contact')">Talk to Nexus</button><button class="btn btn-ghost" onclick="go('marketplace')">View marketplace</button></div></div><div class="hero-panel"><div class="panel-top"><div>What Nexus does</div><span class="pill blue">Find -> Configure -> Launch</span></div><div class="mini-stack">${[['Find','Search by problem, team, category, or outcome.'],['Configure','Add information, accounts, tone, and workflow rules.'],['Launch','Use self-serve or guided setup to get running.']].map((x,i)=>`<div class="mini-card"><div class="icon blue">${i+1}</div><div><h3>${x[0]}</h3><p>${x[1]}</p></div></div>`).join('')}</div></div></div></section><section class="section"><div class="container grid-2"><div class="card highlight"><span class="pill green">Simple purpose</span><h2>We make useful AI easier to adopt.</h2><p>Many companies understand that AI can save time, improve customer engagement, and create better insights. The hard part is implementation. Nexus AI focuses on making the path from need to working automation clearer and faster.</p><p>Each marketplace product explains what it does, what information it needs, how it is deployed, and what the buyer can monitor after launch.</p></div><div class="card"><span class="pill purple">Who it is for</span><h2>Built for teams that want results, not complexity.</h2><div class="activity"><div class="activity-row"><span class="dot"></span><div><strong>Businesses</strong><p class="muted">Find AI tools for reporting, support, sales, marketing, operations, and more.</p></div><span></span></div><div class="activity-row"><span class="dot warn"></span><div><strong>Developers</strong><p class="muted">Package useful automations into products that businesses can discover and use.</p></div><span></span></div><div class="activity-row"><span class="dot"></span><div><strong>Nexus</strong><p class="muted">Reviews, hosts, monitors, and manages the buyer experience.</p></div><span></span></div></div></div></div></section><section class="section light"><div class="container"><div class="section-head center"><span class="eyebrow">Operating model</span><h2>Nexus gives the marketplace trust layer.</h2><p>Developers are not directly hosting customer automations. Nexus becomes the platform layer for review, deployment, credentials, logs, support, and buyer confidence.</p></div><div class="grid-4">${[['Review','Submission checks and hosting readiness.'],['Host','Runtime controlled by Nexus infrastructure.'],['Monitor','Logs, outputs, status, and setup tasks.'],['Support','Nexus first, developer escalation when needed.']].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div></div></section>`;
+    }
+
+    function Contact(){
+      return `<section class="section"><div class="container grid-2"><div><span class="eyebrow">Contact</span><h1 style="font-size:3.6rem">Request a demo or custom hosted workflow.</h1><p class="muted" style="font-size:1.08rem;max-width:700px">Use this page for business inquiries, developer submissions, partnerships, and custom automation requests.</p><div class="card" style="margin-top:1rem"><h3>Contact paths</h3><div class="activity"><div class="activity-row"><span class="dot"></span><div><strong>Businesses</strong><p class="muted">Ask about deploying an automation or customizing a workflow.</p></div><span></span></div><div class="activity-row"><span class="dot warn"></span><div><strong>Developers</strong><p class="muted">Ask how to package an automation for Nexus review and hosting.</p></div><span></span></div><div class="activity-row"><span class="dot"></span><div><strong>Partners</strong><p class="muted">Discuss integrations, channels, and distribution.</p></div><span></span></div></div></div></div><div class="card highlight"><h2>Send a message</h2><div class="form-grid"><div><label>Name</label><input id="contactName" placeholder="Your name"></div><div><label>Email</label><input id="contactEmail" placeholder="email@company.com"></div><div class="full"><label>Inquiry type</label><select id="contactType"><option>Business inquiry</option><option>Developer submission</option><option>Partnership</option><option>Demo request</option><option>Custom automation</option></select></div><div class="full"><label>Message</label><textarea id="contactMessage" placeholder="Tell us what you need."></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="submitContact()">Submit request</button></div></div></section>`;
+    }
+    function submitContact(){
+      const s=getStore();s.contacts.unshift({id:'contact-'+Date.now(),name:val('contactName')||'Unknown',email:val('contactEmail')||'unknown@email.com',type:val('contactType'),message:val('contactMessage')||'No message entered.',createdAt:new Date().toLocaleString()});saveStore(s);toast('Contact request saved in demo');go('contact');
+    }
+    function Pricing(){
+      return `<section class="section"><div class="container"><span class="eyebrow">Pricing</span><h1 style="font-size:3.6rem">Flexible hosted automation pricing.</h1><p class="muted" style="max-width:760px;font-size:1.08rem">Nexus supports monthly automations, one-time purchases, managed installation fees, and developer submissions. Stripe or another payment provider can be connected later.</p><div class="grid" style="margin-top:2rem">${[['Marketplace Access','Free','Browse automations and ask pre-purchase questions.'],['Monthly Automations','From $49/mo','Hosted recurring automations with logs and outputs.'],['Managed Install','From $199','Nexus helps configure, test, and provision the workflow.'],['One-time Automations','From $499','Reviewed automations with setup and hosted deployment.'],['Developer Submissions','Coming soon','Developers submit packages; Nexus hosts after review.'],['Custom Builds','Quoted','For workflows that need custom integrations or complex setup.']].map(x=>`<div class="card"><h3>${x[0]}</h3><strong style="display:block;font-size:2rem;color:var(--primary);margin:.7rem 0">${x[1]}</strong><p>${x[2]}</p></div>`).join('')}</div></div></section>`;
+    }
+
+    function DashboardShell(role, body){
+      const store=getStore();
+      const tabs = role==='buyer' ? [['overview','Overview'],['automations','Automations'],['outputs','Outputs'],['tasks','Setup tasks'],['credentials','Credentials'],['logs','Run logs'],['billing','Billing']] : role==='developer' ? [['overview','Overview'],['listings','Listings'],['submit','Submit / upload'],['questions','Questions'],['installs','Installs'],['analytics','Analytics'],['payouts','Payouts']] : [['overview','Overview'],['reviews','Review queue'],['orders','Orders'],['questions','Questions'],['contacts','Contacts'],['marketplace','Marketplace']];
+      const user = state.user || store.users[role];
+      return `<section class="section light"><div class="container dashboard-layout"><aside class="dash-nav"><div class="dash-identity"><strong>${user.company}</strong><span>${user.name} • ${role} workspace</span></div>${tabs.map(([id,label])=>`<button class="${state.dashTab[role]===id?'active':''}" onclick="state.dashTab.${role}='${id}';render()"><span>${label}</span></button>`).join('')}<button onclick="go('marketplace')"><span>Back to marketplace</span></button></aside><main>${body}</main></div></section>`;
+    }
+    function BuyerDashboard(){
+      const s=getStore(); const tab=state.dashTab.buyer; const b=s.business;
+      const purchased = s.orders;
+      const stats = `<div class="stat-grid"><div class="stat"><span>Active</span><strong>${b.automations.filter(x=>x.status==='Active').length}</strong></div><div class="stat"><span>Outputs</span><strong>${b.outputs.length}</strong></div><div class="stat"><span>Setup issues</span><strong>${b.tasks.filter(x=>['Blocking','Required'].includes(x.status)).length}</strong></div><div class="stat"><span>Monthly spend</span><strong>$306</strong></div></div>`;
+      if(tab==='overview') return DashboardShell('buyer', `${stats}<div class="grid-2"><div class="card"><div class="section-head" style="margin-bottom:1rem"><div><h2>Automation status</h2><p>High-level view of purchased tools.</p></div></div><div class="activity">${b.automations.slice(0,5).map(a=>`<div class="activity-row"><span class="dot ${a.status==='Active'?'':'warn'}"></span><div><strong>${a.name}</strong><p>${a.status} • ${a.integration}</p></div>${statusPill(a.health)}</div>`).join('')}</div></div><div class="card"><h2>Recent activity</h2><div class="activity">${b.logs.map(l=>`<div class="activity-row"><span class="dot ${l.level==='err'?'err':l.level==='warn'?'warn':''}"></span><div><strong>${l.title}</strong><p>${l.detail}</p></div><small>${l.time}</small></div>`).join('')}</div></div></div>`);
+      if(tab==='automations') return DashboardShell('buyer', stats + Table(['Automation','Status','Team','Runs','Last','Next','Price'], b.automations.map(a=>[`<strong>${a.name}</strong><br><span class="muted">${a.desc}</span>`,statusPill(a.status),a.team,a.runs,a.last,a.next,a.price])));
+      if(tab==='outputs') return DashboardShell('buyer', stats + Table(['Output','Automation','Type','Status','Date','Summary'], b.outputs.map(o=>[`<strong>${o.title}</strong>`,o.automation,o.type,statusPill(o.status),o.date,o.summary])));
+      if(tab==='tasks') return DashboardShell('buyer', stats + Table(['Task','Automation','Status','Due','Action'], b.tasks.map(t=>[`<strong>${t.title}</strong>`,t.automation,statusPill(t.status),t.due,`<button class="btn btn-primary btn-small" onclick="toast('Demo task opened')">Open</button>`])));
+      if(tab==='credentials') return DashboardShell('buyer', stats + Table(['Credential','Automation','Status','Updated','Action'], b.credentials.map(c=>[`<strong>${c.name}</strong>`,c.automation,statusPill(c.status),c.updated,`<button class="btn btn-soft btn-small" onclick="toast('Credential update demo')">Update</button>`])));
+      if(tab==='logs') return DashboardShell('buyer', stats + `<div class="card"><h2>Run logs</h2><div class="activity">${b.logs.concat(purchased.map(o=>({level:'warn',title:o.productTitle+' setup created',detail:'Order '+o.id+' is waiting on final setup.',time:o.createdAt}))).map(l=>`<div class="activity-row"><span class="dot ${l.level==='err'?'err':l.level==='warn'?'warn':''}"></span><div><strong>${l.title}</strong><p>${l.detail}</p></div><small>${l.time}</small></div>`).join('')}</div></div>`);
+      return DashboardShell('buyer', stats + `<div class="card"><h2>Billing</h2><p class="muted">Demo billing summary for purchased automations.</p></div>${Table(['Order','Setup','Monthly','One-time','Status'], purchased.map(o=>[`<strong>${o.productTitle}</strong><br><span class="muted">${o.createdAt}</span>`,o.setupType,money(o.priceMonthly),money(o.priceOneTime),statusPill(o.status)]))}`);
+    }
+
+    function DeveloperDashboard(){
+      const s=getStore(); const tab=state.dashTab.developer; const subs=s.submissions; const questions=s.questions;
+      const published=subs.filter(x=>x.status==='approved').length, pending=subs.filter(x=>x.status==='pending').length;
+      const stats = `<div class="stat-grid"><div class="stat"><span>Listings</span><strong>${subs.length}</strong></div><div class="stat"><span>Published</span><strong>${published}</strong></div><div class="stat"><span>Review</span><strong>${pending}</strong></div><div class="stat"><span>Revenue</span><strong>$4,491</strong></div></div>`;
+      if(tab==='overview') return DashboardShell('developer', `${stats}<div class="grid-2"><div class="card"><h2>Developer command center</h2><p class="muted">Submit automations, track Nexus review status, view buyer questions, and monitor installs.</p><div class="tag-row"><button class="btn btn-primary" onclick="state.dashTab.developer='submit';render()">Submit automation</button><button class="btn btn-ghost" onclick="state.dashTab.developer='listings';render()">Manage listings</button></div></div><div class="card"><h2>Review reminders</h2><div class="activity"><div class="activity-row"><span class="dot warn"></span><div><strong>Runtime notes required</strong><p>Include environment variables, schedules, input and output schema.</p></div><span></span></div><div class="activity-row"><span class="dot"></span><div><strong>Nexus hosts the runtime</strong><p>Developers submit packages; customers do not run developer infrastructure.</p></div><span></span></div></div></div></div>`);
+      if(tab==='submit') return DashboardShell('developer', stats + SubmitAutomationForm(subs));
+      if(tab==='listings') return DashboardShell('developer', stats + Table(['Submission','Status','Hosting','Type','Price','Created'], subs.map(l=>[`<strong>${l.title}</strong><br><span class="muted">${l.category}</span>`,statusPill(l.status),'Nexus review/hosting',l.type,`${l.monthlyPrice?money(l.monthlyPrice)+'/mo':''}${l.oneTimePrice?' + '+money(l.oneTimePrice):''}`,l.createdAt])));
+      if(tab==='questions') return DashboardShell('developer', stats + Table(['Product','Company','Question','Status','Date'], questions.map(q=>[`<strong>${q.productTitle}</strong>`,q.company,q.question,statusPill('Routed via Nexus'),q.createdAt])));
+      if(tab==='installs') return DashboardShell('developer', stats + Table(['Buyer','Automation','Status','Revenue','Support','Date'], [['Acme Hotels','Invoice Processing Automation','Active','$499','None','Today'],['BluePeak Agency','Invoice Processing Automation','Active','$499','Question open','Yesterday'],['Northstar Finance','Invoice Processing Automation','Setup','$499','Needs mapping','3 days ago']].map(r=>[`<strong>${r[0]}</strong>`,r[1],statusPill(r[2]),r[3],r[4],r[5]])));
+      if(tab==='analytics') return DashboardShell('developer', stats + `<div class="grid-4">${[['Views','1,840'],['Conversion','6.4%'],['Avg rating','4.5'],['Open support','1']].map(x=>`<div class="stat"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join('')}</div><div class="card" style="margin-top:1rem"><h2>Analytics</h2><p class="muted">Demo marketplace analytics. Connect production events later.</p></div>`);
+      return DashboardShell('developer', stats + `<div class="card"><h2>Payouts</h2><p class="muted">Demo payouts view. Stripe Connect or another payout provider can be added later.</p><div class="price-box"><span>Estimated gross</span><strong>$4,491</strong></div></div>`);
+    }
+    function SubmitAutomationForm(subs){
+      return `<div class="card" style="margin-bottom:1rem"><h2>Submit / upload automation</h2><p class="muted" style="margin-bottom:1rem">Developers do not host customer automations. Submit the listing, workflow details, runtime requirements, code/package handoff notes, input/output schema, and hosting requirements. Nexus reviews, packages, hosts, and monitors the automation.</p><div class="form-grid"><div><label>Automation title</label><input id="subTitle" placeholder="AI Invoice Processing Agent"></div><div><label>Category</label><select id="subCategory">${['Sales','Marketing','Customer Support','Operations','Finance','HR','Reporting','E-commerce'].map(x=>`<option>${x}</option>`).join('')}</select></div><div><label>Pricing type</label><select id="subType"><option>Monthly</option><option>One-time</option><option>Monthly + setup</option></select></div><div><label>Monthly price</label><input id="subMonthly" type="number" placeholder="99"></div><div><label>One-time/setup price</label><input id="subOneTime" type="number" placeholder="299"></div><div><label>Complexity</label><select id="subComplexity"><option>Easy</option><option>Medium</option><option>Advanced</option></select></div><div class="full"><label>Short marketplace description</label><input id="subShort" placeholder="Short product card description"></div><div class="full"><label>Full customer-facing description</label><textarea id="subDescription" placeholder="Explain what it does, who it is for, how it works..."></textarea></div><div><label>Required integrations</label><input id="subIntegrations" placeholder="HubSpot, Gmail, Slack"></div><div><label>Buyer credentials needed</label><input id="subCredentials" placeholder="API key, account access, webhook"></div><div class="full"><label>Runtime / hosting handoff notes for Nexus</label><textarea id="subRuntime" placeholder="How Nexus should host this: runtime, environment variables, API calls, cron schedule, input schema, output schema, limits..."></textarea></div><div class="full"><label>Security / data handling notes</label><textarea id="subSecurity" placeholder="Data stored, API keys required, external APIs used, retention concerns..."></textarea></div><div class="full"><label>Support notes</label><textarea id="subSupport" placeholder="What support the developer provides to Nexus, not directly to buyer..."></textarea></div></div><button class="btn btn-soft" style="margin-top:1rem" onclick="saveSubmission('draft')">Save draft</button> <button class="btn btn-primary" style="margin-top:1rem" onclick="saveSubmission('pending')">Submit to Nexus review</button></div>`;
+    }
+    function saveSubmission(status){
+      const s=getStore();
+      s.submissions.unshift({id:'sub-'+Date.now(), seller:state.user?.company || 'Demo Developer', title:val('subTitle') || 'Untitled Automation', category:val('subCategory'), type:val('subType'), monthlyPrice:val('subMonthly'), oneTimePrice:val('subOneTime'), complexity:val('subComplexity'), short:val('subShort'), description:val('subDescription') || 'No description yet.', integrations:val('subIntegrations'), credentials:val('subCredentials'), runtime:val('subRuntime'), security:val('subSecurity'), support:val('subSupport'), setup:'Nexus review + 3-7 days', status, createdAt:new Date().toLocaleString()});
+      saveStore(s); toast(status==='pending'?'Submitted to Nexus hosting review':'Draft saved'); state.dashTab.developer='listings'; render();
+    }
+
+    function AdminDashboard(){
+      const s=getStore(); const tab=state.dashTab.admin; const pending=s.submissions.filter(x=>x.status==='pending');
+      const stats=`<div class="stat-grid"><div class="stat"><span>Orders</span><strong>${s.orders.length}</strong></div><div class="stat"><span>Questions</span><strong>${s.questions.length}</strong></div><div class="stat"><span>Hosting review</span><strong>${pending.length}</strong></div><div class="stat"><span>Marketplace</span><strong>${allProducts().length}</strong></div></div>`;
+      if(tab==='overview') return DashboardShell('admin', stats + `<div class="grid-2"><div class="card"><h2>Nexus admin overview</h2><p class="muted">Review developer submissions, approve hosted listings, track questions, and monitor marketplace activity.</p></div><div class="card"><h2>Review policy</h2><p class="muted">Approve only after Nexus checks runtime, security, input/output schema, hosting requirements, and buyer setup needs.</p></div></div>`);
+      if(tab==='reviews') return DashboardShell('admin', stats + Table(['Submission','Seller','Runtime notes','Security notes','Action'], pending.map(l=>[`<strong>${l.title}</strong><br><span class="muted">${String(l.description).slice(0,90)}...</span>`,l.seller,String(l.runtime||'No runtime notes').slice(0,120)+'...',String(l.security||'No security notes').slice(0,120)+'...',`<button class="btn btn-primary btn-small" onclick="reviewSubmission('${l.id}','approved')">Approve + publish</button> <button class="btn btn-danger btn-small" onclick="reviewSubmission('${l.id}','rejected')">Reject</button>`])));
+      if(tab==='orders') return DashboardShell('admin', stats + Table(['Order','Buyer','Setup','Monthly','One-time','Status'], s.orders.map(o=>[`<strong>${o.productTitle}</strong><br><span class="muted">${o.createdAt}</span>`,o.company,o.setupType,money(o.priceMonthly),money(o.priceOneTime),statusPill(o.status)])));
+      if(tab==='questions') return DashboardShell('admin', stats + Table(['Product','Company','Email','Question','Date'], s.questions.map(q=>[`<strong>${q.productTitle}</strong>`,q.company,q.email,q.question,q.createdAt])));
+      if(tab==='contacts') return DashboardShell('admin', stats + Table(['Name','Email','Type','Message','Date'], s.contacts.map(c=>[`<strong>${c.name}</strong>`,c.email,c.type,c.message,c.createdAt])));
+      return DashboardShell('admin', stats + Table(['Product','Seller','Category','Type','Price'], allProducts().map(p=>[`<strong>${p.title}</strong>`,p.seller,p.category,p.type,pricingText(p)])));
+    }
+    function reviewSubmission(id,status){const s=getStore();const item=s.submissions.find(x=>x.id===id);if(item)item.status=status;saveStore(s);toast('Submission '+status);render()}
+
+    function Table(headers, rows){
+      return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.length ? rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('') : `<tr><td colspan="${headers.length}">No data yet.</td></tr>`}</tbody></table></div>`;
+    }
+
+    document.getElementById('productModal').addEventListener('click', e=>{ if(e.target.id==='productModal') closeProduct(); });
+    document.getElementById('questionModal').addEventListener('click', e=>{ if(e.target.id==='questionModal') closeQuestion(); });
+    render();
+  </script>
+</body>
+</html>
