@@ -298,12 +298,34 @@
     .preview-row{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid #edf2f7;padding:.74rem 0;gap:1rem;font-size:.9rem}.preview-row strong{color:var(--primary)}
     .preview-chat{display:grid;gap:.65rem}.bubble{padding:.75rem;border-radius:16px;max-width:90%;font-size:.9rem}.bubble.user{background:#eff6ff;color:#075985;justify-self:start}.bubble.bot{background:#ecfdf5;color:#065f46;justify-self:end}
 
+
+
+    .dev-link{border:0;background:transparent;color:#0369a1;font-weight:900;padding:0;text-align:left;cursor:pointer}
+    .dev-link:hover{text-decoration:underline}
+    .developer-card{background:#fff;border:1px solid #e6edf6;border-radius:24px;padding:1rem;box-shadow:var(--shadow2);display:flex;gap:.9rem;align-items:flex-start;margin:1rem 0}
+    .dev-avatar{width:56px;height:56px;border-radius:18px;object-fit:cover;background:linear-gradient(135deg,var(--primary),var(--blue));color:#fff;display:grid;place-items:center;font-weight:950;flex:0 0 auto;overflow:hidden}
+    .dev-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .dev-avatar.large{width:112px;height:112px;border-radius:28px;font-size:2rem;border:4px solid #fff;box-shadow:0 14px 34px rgba(15,23,42,.14)}
+    .dev-banner{height:240px;border-radius:32px;background:linear-gradient(135deg,#eff8ff,#f5f3ff);border:1px solid #dbeafe;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+    .dev-banner img{width:100%;height:100%;object-fit:cover;display:block}
+    .dev-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(15,23,42,.18))}
+    .dev-profile-head{margin-top:-54px;position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding:0 1.2rem 1.2rem}
+    .dev-title-card{display:flex;align-items:flex-end;gap:1rem}
+    .dev-title-card h1{font-size:clamp(2.2rem,4vw,4rem);margin:0 0 .35rem;color:var(--primary)}
+    .dev-title-card p{color:var(--muted);font-size:1rem;max-width:700px}
+    .dev-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:1rem 0}
+    .dev-stat{background:#fff;border:1px solid #e6edf6;border-radius:20px;padding:1rem;box-shadow:var(--shadow2)}
+    .dev-stat span{display:block;color:#94a3b8;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;font-weight:950}.dev-stat strong{display:block;color:var(--primary);font-size:1.55rem;margin-top:.15rem}
+    .review-list{display:grid;gap:.8rem}.review-card{background:#fff;border:1px solid #e6edf6;border-radius:20px;padding:1rem;box-shadow:var(--shadow2)}.review-card strong{color:var(--primary)}.review-card p{color:var(--muted);margin:.45rem 0}.stars{color:#f59e0b;font-weight:950;letter-spacing:.03em}
+    .profile-preview{border:1px solid #e6edf6;background:#fff;border-radius:24px;padding:1rem;box-shadow:var(--shadow2)}
+    .upload-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}.copy-box{display:flex;gap:.5rem;align-items:center;background:#f8fafc;border:1px solid #edf2f7;border-radius:16px;padding:.55rem}.copy-box input{border:0;background:transparent;box-shadow:none;padding:.5rem}
+
     footer{background:#0b1220;color:#cbd5e1;padding:2rem 0;margin-top:0}
     .footer-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}.footer-links{display:flex;gap:1rem;flex-wrap:wrap}.footer-links button{border:0;background:transparent;color:#cbd5e1;font-weight:750}.footer-links button:hover{color:#fff}
     .toast{position:fixed;right:1rem;bottom:1rem;z-index:600;background:var(--primary);color:#fff;padding:.9rem 1rem;border-radius:14px;box-shadow:var(--shadow);display:none;font-weight:850;max-width:min(440px,calc(100vw - 2rem))}.toast.show{display:block}
 
-    @media(max-width:1080px){.hero-grid,.market-layout,.dashboard-layout,.modal{grid-template-columns:1fr}.modal-side{border-right:0;border-bottom:1px solid #edf2f7}.sidebar,.dash-nav{position:static}.grid{grid-template-columns:1fr 1fr}.grid-4,.stat-grid{grid-template-columns:1fr 1fr}.toolbar-card{grid-template-columns:1fr 1fr}.preview-kpis{grid-template-columns:1fr 1fr}}
-    @media(max-width:720px){.nav{align-items:flex-start}.logo{font-size:1.35rem}.nav-links{gap:.35rem}.nav-link{padding:.55rem .55rem}.hero{padding:4rem 0 3.2rem}h1{font-size:2.55rem}.hero-actions,.modal-actions{grid-template-columns:1fr;flex-direction:column}.btn{width:100%}.toolbar{top:88px}.toolbar-card,.grid,.grid-2,.grid-4,.choice-grid,.form-grid,.stat-grid,.card-actions,.meta-grid,.preview-kpis{grid-template-columns:1fr}.mini-card{grid-template-columns:auto 1fr}.mini-card .price{grid-column:1/-1;text-align:left}.section-head{display:block}.market-layout{display:block}.sidebar{margin-bottom:1rem}.preview-header{display:block}.preview-row{grid-template-columns:1fr}.footer-row{display:block}.footer-links{margin-top:1rem}}
+    @media(max-width:1080px){.hero-grid,.market-layout,.dashboard-layout,.modal{grid-template-columns:1fr}.dev-stats{grid-template-columns:1fr 1fr}.modal-side{border-right:0;border-bottom:1px solid #edf2f7}.sidebar,.dash-nav{position:static}.grid{grid-template-columns:1fr 1fr}.grid-4,.stat-grid{grid-template-columns:1fr 1fr}.toolbar-card{grid-template-columns:1fr 1fr}.preview-kpis{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.dev-profile-head,.dev-title-card{display:block}.dev-stats,.upload-row{grid-template-columns:1fr}.dev-avatar.large{margin-bottom:.8rem}.nav{align-items:flex-start}.logo{font-size:1.35rem}.nav-links{gap:.35rem}.nav-link{padding:.55rem .55rem}.hero{padding:4rem 0 3.2rem}h1{font-size:2.55rem}.hero-actions,.modal-actions{grid-template-columns:1fr;flex-direction:column}.btn{width:100%}.toolbar{top:88px}.toolbar-card,.grid,.grid-2,.grid-4,.choice-grid,.form-grid,.stat-grid,.card-actions,.meta-grid,.preview-kpis{grid-template-columns:1fr}.mini-card{grid-template-columns:auto 1fr}.mini-card .price{grid-column:1/-1;text-align:left}.section-head{display:block}.market-layout{display:block}.sidebar{margin-bottom:1rem}.preview-header{display:block}.preview-row{grid-template-columns:1fr}.footer-row{display:block}.footer-links{margin-top:1rem}}
   </style>
 </head>
 <body>
@@ -428,6 +450,47 @@
       }
     ];
 
+
+
+    const seedDevelopers = [
+      {
+        id:'nexus-ai', slug:'nexus-ai', name:'Nexus AI', studio:'Nexus AI', headline:'Official Nexus-hosted automation team',
+        bio:'Nexus AI creates and hosts practical business automations that are ready to configure, deploy, monitor, and support through the Nexus platform.',
+        avatar:'', banner:'', website:'https://nexus-ai.software', supportEmail:'support@nexus-ai.software',
+        specialties:['Hosted automations','Social listening','Reporting','Chatbots','Business workflows'], verified:true
+      },
+      {
+        id:'nexus-ai-labs', slug:'nexus-ai-labs', name:'Nexus AI Labs', studio:'Nexus AI Labs', headline:'Experimental sales and growth automations hosted by Nexus',
+        bio:'Nexus AI Labs builds growth-focused automations for sales, lead generation, data enrichment, and outbound operations.',
+        avatar:'', banner:'', website:'https://nexus-ai.software', supportEmail:'labs@nexus-ai.software',
+        specialties:['Lead generation','Sales ops','CRM workflows','Enrichment'], verified:true
+      },
+      {
+        id:'finops-builder', slug:'finops-builder', name:'FinOps Builder', studio:'FinOps Builder', headline:'Finance workflow automations reviewed and hosted by Nexus',
+        bio:'FinOps Builder creates automations for invoice processing, finance operations, validation workflows, and structured finance outputs.',
+        avatar:'', banner:'', website:'https://example.com/finops', supportEmail:'support@finopsbuilder.example',
+        specialties:['Finance','Invoices','Validation','Data extraction'], verified:false
+      },
+      {
+        id:'reputation-studio', slug:'reputation-studio', name:'Reputation Studio', studio:'Reputation Studio', headline:'Reputation and review automations for service businesses',
+        bio:'Reputation Studio builds workflows for review monitoring, response drafting, sentiment tracking, and customer feedback summaries.',
+        avatar:'', banner:'', website:'https://example.com/reputation', supportEmail:'hello@reputationstudio.example',
+        specialties:['Reviews','Reputation','Customer feedback','Hospitality'], verified:false
+      },
+      {
+        id:'automation-studio', slug:'automation-studio', name:'Automation Studio', studio:'Automation Studio', headline:'Custom business workflow automation studio',
+        bio:'Automation Studio packages business automations for Nexus review, including CRM workflows, enrichment, and operational agents.',
+        avatar:'', banner:'', website:'https://example.com/automation-studio', supportEmail:'dev@automationstudio.example',
+        specialties:['CRM','Sales ops','Workflow automation','APIs'], verified:false
+      }
+    ];
+
+    const seedDeveloperReviews = [
+      {id:'rev-1', developerId:'nexus-ai', productId:'social-listening', productTitle:'Social Listening Intelligence', rating:5, buyer:'BluePeak Agency', title:'Easy to launch and clear outputs', comment:'The preview matched what we received in the dashboard. Setup was straightforward and the weekly insights are easy to understand.', date:'2 weeks ago'},
+      {id:'rev-2', developerId:'nexus-ai', productId:'social-reports', productTitle:'AI Social Media Reports', rating:5, buyer:'Acme Marketing', title:'Saved our reporting team hours', comment:'The report structure is clean and gives our client team talking points without manual analysis.', date:'1 month ago'},
+      {id:'rev-3', developerId:'finops-builder', productId:'invoice-agent', productTitle:'Invoice Processing Automation', rating:4, buyer:'Northstar Finance', title:'Strong extraction workflow', comment:'The invoice extraction worked well after mapping our fields. Nexus hosting made the setup easier.', date:'3 weeks ago'},
+      {id:'rev-4', developerId:'reputation-studio', productId:'review-radar', productTitle:'Review Response Radar', rating:4, buyer:'Harbor Hotels', title:'Helpful for urgent reviews', comment:'The urgent review alerts helped our team respond faster and keep track of repeated complaints.', date:'4 weeks ago'}
+    ];
     const businessSeed = {
       automations:[
         {id:'a1',name:'Social Listening Intelligence',status:'Active',team:'Marketing',health:'Healthy',price:'$59/mo',runs:82,outputs:1284,last:'12 min ago',next:'18:00 today',integration:'Google Reviews + Slack',desc:'Tracks brand mentions, sentiment, complaints, competitor signals, and topic trends.'},
@@ -470,6 +533,8 @@
     function defaultStore(){
       return {
         products: seedProducts,
+        developers: seedDevelopers,
+        developerReviews: seedDeveloperReviews,
         orders: [],
         questions: [],
         contacts: [],
@@ -486,28 +551,60 @@
     }
     function getStore(){
       const raw = localStorage.getItem('nexus_master_store');
+      let store;
       if(raw){
-        try{return JSON.parse(raw)}catch(e){}
+        try{store = JSON.parse(raw)}catch(e){}
       }
-      const store = defaultStore();
-      localStorage.setItem('nexus_master_store', JSON.stringify(store));
+      if(!store) store = defaultStore();
+      store.products = store.products || seedProducts;
+      store.developers = store.developers || seedDevelopers;
+      store.developerReviews = store.developerReviews || seedDeveloperReviews;
+      store.orders = store.orders || [];
+      store.questions = store.questions || [];
+      store.contacts = store.contacts || [];
+      store.submissions = store.submissions || [];
+      store.business = store.business || JSON.parse(JSON.stringify(businessSeed));
+      store.users = store.users || defaultStore().users;
+      // Ensure demo developer user has a connected public profile.
+      store.users.developer.developerId = store.users.developer.developerId || 'automation-studio';
+      saveStore(store);
       return store;
     }
     function saveStore(store){localStorage.setItem('nexus_master_store', JSON.stringify(store))}
     function resetDemo(){localStorage.removeItem('nexus_master_store'); state.user=null; state.activeRole=null; state.route='home'; toast('Demo data reset'); render()}
 
+    function developerIdFromSeller(seller){
+      const key = String(seller || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      const map = {'nexus-ai':'nexus-ai','nexus-ai-labs':'nexus-ai-labs','finops-builder':'finops-builder','reputation-studio':'reputation-studio','automation-studio':'automation-studio'};
+      return map[key] || key || 'automation-studio';
+    }
+    function getDeveloper(id){
+      const store = getStore();
+      return (store.developers || []).find(d => d.id===id || d.slug===id) || (store.developers || [])[0];
+    }
+    function developerForProduct(p){return getDeveloper(p.developerId || developerIdFromSeller(p.seller));}
+    function developerProducts(devId){return allProducts().filter(p => (p.developerId || developerIdFromSeller(p.seller)) === devId);}
+    function developerReviews(devId){return (getStore().developerReviews || []).filter(r => r.developerId === devId);}
+    function avgRating(devId){
+      const rev = developerReviews(devId);
+      if(!rev.length) return 'New';
+      return (rev.reduce((s,r)=>s+Number(r.rating||0),0)/rev.length).toFixed(1);
+    }
+    function publicProfileUrl(devId){return location.origin + location.pathname + '#/developer/' + getDeveloper(devId).slug;}
     function allProducts(){
       const store = getStore();
+      const base = (store.products || seedProducts).map(p => ({...p, developerId:p.developerId || developerIdFromSeller(p.seller)}));
       const approved = store.submissions.filter(x=>x.status==='approved').map(x=>({
         id:x.id,
+        developerId:x.developerId || developerIdFromSeller(x.seller),
         title:x.title,
-        seller:x.seller || 'Marketplace Developer',
+        seller:x.seller || getDeveloper(x.developerId || 'automation-studio')?.name || 'Marketplace Developer',
         category:x.category,
         type:x.type,
         basePrice:Number(x.monthlyPrice || 0),
         oneTimePrice:x.oneTimePrice ? Number(x.oneTimePrice) : null,
-        rating:4.3,
-        reviews:0,
+        rating:avgRating(x.developerId || developerIdFromSeller(x.seller)) === 'New' ? 4.3 : Number(avgRating(x.developerId || developerIdFromSeller(x.seller))),
+        reviews:developerReviews(x.developerId || developerIdFromSeller(x.seller)).length,
         setup:x.setup || 'Nexus review + 3-7 days',
         complexity:x.complexity || 'Medium',
         badge:'Nexus-hosted seller listing',
@@ -523,9 +620,8 @@
         support:x.support || 'Nexus support first, developer escalation second.',
         preview:'seller'
       }));
-      return [...store.products, ...approved];
+      return [...base, ...approved];
     }
-
     function money(n){return '$' + Number(n || 0).toLocaleString()}
     function pricingText(p){
       if(p.type==='Monthly') return money(p.basePrice) + '/mo';
@@ -558,12 +654,20 @@
     function routeForRole(role){return role==='buyer' ? 'buyerDashboard' : role==='developer' ? 'developerDashboard' : 'adminDashboard'}
     function login(role){const s=getStore();state.user=s.users[role];state.activeRole=role;toast('Logged in as ' + role);go(routeForRole(role))}
     function logout(){state.user=null;state.activeRole=null;toast('Logged out');go('home')}
-    function go(route){state.route=route;window.scrollTo(0,0);render()}
+    function go(route){state.route=route;state.profileId=null; if(location.hash !== '#/'+route) location.hash='/'+route; window.scrollTo(0,0);render()}
+    function goDeveloperProfile(devId){const d=getDeveloper(devId);state.route='developerProfile';state.profileId=d.id; if(location.hash !== '#/developer/'+d.slug) location.hash='/developer/'+d.slug; window.scrollTo(0,0);render()}
+    function parseHash(){
+      const h=(location.hash||'#/home').replace(/^#\/?/,'');
+      if(h.startsWith('developer/')){const slug=h.split('/')[1]; const d=(getStore().developers||[]).find(x=>x.slug===slug||x.id===slug); state.route='developerProfile'; state.profileId=d?d.id:slug; return;}
+      const allowed=['home','marketplace','developers','about','contact','pricing','login','setupChoice','checkout','finalSetup','buyerDashboard','developerDashboard','adminDashboard'];
+      state.route=allowed.includes(h)?h:'home';
+    }
+    window.addEventListener('hashchange',()=>{parseHash();render();});
     function dashboardRoute(){state.user ? go(routeForRole(state.activeRole)) : go('login')}
 
     function renderNav(){
       const links = [
-        ['home','Home'],['marketplace','Marketplace'],['about','About'],['contact','Contact'],['pricing','Pricing']
+        ['home','Home'],['marketplace','Marketplace'],['developers','Developers'],['about','About'],['contact','Contact'],['pricing','Pricing']
       ];
       const active = state.route;
       const session = state.user
@@ -573,7 +677,7 @@
     }
     function render(){
       renderNav();
-      const pages = {home:Home, marketplace:Marketplace, about:About, contact:Contact, pricing:Pricing, login:Login, setupChoice:SetupChoice, checkout:Checkout, finalSetup:FinalSetup, buyerDashboard:BuyerDashboard, developerDashboard:DeveloperDashboard, adminDashboard:AdminDashboard};
+      const pages = {home:Home, marketplace:Marketplace, developers:DeveloperDirectory, developerProfile:DeveloperProfilePage, about:About, contact:Contact, pricing:Pricing, login:Login, setupChoice:SetupChoice, checkout:Checkout, finalSetup:FinalSetup, buyerDashboard:BuyerDashboard, developerDashboard:DeveloperDashboard, adminDashboard:AdminDashboard};
       document.getElementById('app').innerHTML = (pages[state.route] || Home)() + Footer();
     }
 
@@ -603,7 +707,8 @@
     }
     function EmptyState(title, copy){return `<div class="card" style="grid-column:1/-1;text-align:center;padding:2rem"><h3>${title}</h3><p>${copy}</p></div>`}
     function ProductCard(p){
-      return `<div class="product-card" onclick="openProduct('${p.id}')"><div class="product-top"><div class="icon ${iconColor(p.category)}">${initials(p.title)}</div><span class="pill ${p.badge.includes('Popular')?'green':p.badge.includes('Nexus')?'purple':'orange'}">${p.badge}</span></div><h3>${p.title}</h3><p>${p.short}</p><div class="meta-grid"><div class="meta"><span>Price</span><strong>${pricingText(p)}</strong></div><div class="meta"><span>Hosted by</span><strong>Nexus</strong></div><div class="meta"><span>Rating</span><strong>★ ${p.rating}</strong></div><div class="meta"><span>Setup</span><strong>${p.setup}</strong></div></div><div class="tags">${p.integrations.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="card-actions"><button class="btn btn-primary btn-small" onclick="event.stopPropagation();openProduct('${p.id}')">View popup</button><button class="btn btn-ghost btn-small" onclick="event.stopPropagation();quickBuy('${p.id}')">Buy</button></div></div>`;
+      const dev = developerForProduct(p);
+      return `<div class="product-card" onclick="openProduct('${p.id}')"><div class="product-top"><div class="icon ${iconColor(p.category)}">${initials(p.title)}</div><span class="pill ${p.badge.includes('Popular')?'green':p.badge.includes('Nexus')?'purple':'orange'}">${p.badge}</span></div><h3>${p.title}</h3><p>${p.short}</p><button class="dev-link" onclick="event.stopPropagation();goDeveloperProfile('${dev.id}')">by ${dev.name} ${dev.verified?'✓':''}</button><div class="meta-grid"><div class="meta"><span>Price</span><strong>${pricingText(p)}</strong></div><div class="meta"><span>Hosted by</span><strong>Nexus</strong></div><div class="meta"><span>Dev rating</span><strong>${avgRating(dev.id)==='New'?'New':'★ '+avgRating(dev.id)}</strong></div><div class="meta"><span>Setup</span><strong>${p.setup}</strong></div></div><div class="tags">${p.integrations.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="card-actions"><button class="btn btn-primary btn-small" onclick="event.stopPropagation();openProduct('${p.id}')">View popup</button><button class="btn btn-ghost btn-small" onclick="event.stopPropagation();quickBuy('${p.id}')">Buy</button></div></div>`;
     }
     function setSearch(v){state.filters.search=v;render()}
     function setCategory(v){state.filters.category=v;render()}
@@ -616,10 +721,18 @@
     function renderProductModal(){
       const p=state.selectedProduct; if(!p) return;
       const est=estimatePrice(p);
-      document.getElementById('modalSide').innerHTML = `<div class="modal-head"><div><span class="pill blue">${p.category}</span> <span class="pill green">★ ${p.rating} (${p.reviews})</span> <span class="pill purple">Nexus-hosted</span><h2>${p.title}</h2><p class="muted">${p.description}</p></div><button class="close" onclick="closeProduct()">Close</button></div><div class="price-box"><span>Estimated configured price</span><strong>${est.monthly ? money(est.monthly) + '/mo' : ''}${est.oneTime ? (est.monthly ? ' + ' : '') + money(est.oneTime) + ' setup/once' : ''}</strong></div>${InfoBlock('Who it is for',p.who)}${InfoBlock('What it does',p.does)}${InfoBlock('How Nexus deploys it',p.how)}${InfoBlock('Credentials needed',p.credentials)}${InfoBlock('Security model',p.security)}<div class="info-block"><h4>Support</h4><p>${p.support}</p></div>`;
+      document.getElementById('modalSide').innerHTML = `<div class="modal-head"><div><span class="pill blue">${p.category}</span> <span class="pill green">★ ${p.rating} (${p.reviews})</span> <span class="pill purple">Nexus-hosted</span><h2>${p.title}</h2><p class="muted">${p.description}</p></div><button class="close" onclick="closeProduct()">Close</button></div><div class="price-box"><span>Estimated configured price</span><strong>${est.monthly ? money(est.monthly) + '/mo' : ''}${est.oneTime ? (est.monthly ? ' + ' : '') + money(est.oneTime) + ' setup/once' : ''}</strong></div>${DeveloperMiniCard(p)}${InfoBlock('Who it is for',p.who)}${InfoBlock('What it does',p.does)}${InfoBlock('How Nexus deploys it',p.how)}${InfoBlock('Credentials needed',p.credentials)}${InfoBlock('Security model',p.security)}<div class="info-block"><h4>Support</h4><p>${p.support}</p></div>`;
       document.getElementById('modalMain').innerHTML = `<div class="preview-shell"><div class="browser-bar"><span class="browser-dot red"></span><span class="browser-dot yellow"></span><span class="browser-dot green"></span><span>nexus.ai / hosted preview</span></div><div class="preview-window">${ProductPreview(p)}</div></div><div class="card"><h3>Customize before buying</h3><div class="form-grid"><div><label>Industry</label><select onchange="state.customize.industry=this.value;renderProductModal()"><option ${state.customize.industry==='General'?'selected':''}>General</option><option ${state.customize.industry==='Hospitality'?'selected':''}>Hospitality</option><option ${state.customize.industry==='E-commerce'?'selected':''}>E-commerce</option><option ${state.customize.industry==='B2B Services'?'selected':''}>B2B Services</option><option ${state.customize.industry==='Finance'?'selected':''}>Finance</option></select></div><div><label>Volume</label><select onchange="state.customize.volume=this.value;renderProductModal()"><option ${state.customize.volume==='Standard'?'selected':''}>Standard</option><option ${state.customize.volume==='High'?'selected':''}>High</option><option ${state.customize.volume==='Enterprise'?'selected':''}>Enterprise</option></select></div><div><label>Tone</label><select onchange="state.customize.tone=this.value;renderProductModal()"><option ${state.customize.tone==='Professional'?'selected':''}>Professional</option><option ${state.customize.tone==='Friendly'?'selected':''}>Friendly</option><option ${state.customize.tone==='Executive'?'selected':''}>Executive</option></select></div><div><label>Main integration</label><select onchange="state.customize.integration=this.value;renderProductModal()">${p.integrations.map(x=>`<option ${state.customize.integration===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="full"><label class="check"><input type="checkbox" ${state.customize.enrichment?'checked':''} onchange="state.customize.enrichment=this.checked;renderProductModal()"> Add enriched summaries and recommendations (+$15/mo)</label></div></div><div class="modal-actions"><button class="btn btn-primary" onclick="buySelected()">Buy / deploy</button><button class="btn btn-ghost" onclick="openQuestion()">Ask Nexus</button><button class="btn btn-soft" onclick="toast('Added to comparison')">Compare</button></div></div>`;
     }
     function InfoBlock(title, items){return `<div class="info-block"><h4>${title}</h4><ul class="clean">${items.map(x=>`<li>${x}</li>`).join('')}</ul></div>`}
+    function AvatarHTML(dev, cls=''){
+      return `<div class="dev-avatar ${cls}">${dev.avatar ? `<img src="${dev.avatar}" alt="${dev.name}">` : initials(dev.name)}</div>`;
+    }
+    function DeveloperMiniCard(p){
+      const dev=developerForProduct(p); const rev=developerReviews(dev.id);
+      return `<div class="developer-card"><button style="border:0;background:transparent" onclick="closeProduct();goDeveloperProfile('${dev.id}')">${AvatarHTML(dev)}</button><div><span class="pill ${dev.verified?'green':'blue'}">${dev.verified?'Verified developer':'Marketplace developer'}</span><h3 style="color:var(--primary);margin:.45rem 0 .2rem"><button class="dev-link" onclick="closeProduct();goDeveloperProfile('${dev.id}')">${dev.name}</button></h3><p class="muted" style="font-size:.9rem">${dev.headline}</p><div class="tag-row"><span class="tag">${avgRating(dev.id)==='New'?'New':'★ '+avgRating(dev.id)}</span><span class="tag">${developerProducts(dev.id).length} listings</span><span class="tag">${rev.length} reviews</span></div></div></div>`;
+    }
+
     function ProductPreview(p){
       const c=state.customize;
       const rows = {
@@ -635,7 +748,11 @@
     }
     function quickBuy(id){state.selectedProduct=allProducts().find(x=>x.id===id);buySelected()}
     function buySelected(){state.checkoutItem=state.selectedProduct;closeProduct();state.setupType=null;go('setupChoice')}
-    function openQuestion(){closeProduct();document.getElementById('questionModal').classList.add('open')}
+    function openQuestion(){
+      closeProduct();
+      document.getElementById('questionModal').innerHTML = `<div class="modal single"><div class="modal-main"><div class="modal-head"><div><span class="pill blue">Ask before buying</span><h2>Ask Nexus a question</h2><p class="muted">Questions are routed through Nexus first. Developers can be escalated when technical review is needed.</p></div><button class="close" onclick="closeQuestion()">Close</button></div><div class="form-grid"><div><label>Your email</label><input id="questionEmail" placeholder="you@company.com"></div><div><label>Company</label><input id="questionCompany" placeholder="Company name"></div><div class="full"><label>Question</label><textarea id="questionText" placeholder="Ask about setup, integrations, customization, hosting, data privacy, or pricing..."></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="submitQuestion()">Send question</button></div></div>`;
+      document.getElementById('questionModal').classList.add('open')
+    }
     function closeQuestion(){document.getElementById('questionModal').classList.remove('open')}
     function submitQuestion(){
       const store=getStore();
@@ -653,7 +770,7 @@
     }
     function confirmCheckout(){
       const p=state.checkoutItem || allProducts()[0]; const est=estimatePrice(p); const store=getStore();
-      const order={id:'ord-'+Date.now(), productId:p.id, productTitle:p.title, status:'Setup required', setupType:state.setupType || 'Self-serve', priceMonthly:est.monthly, priceOneTime:est.oneTime, buyerName:val('buyerName') || state.user?.name || 'Demo Buyer', email:val('buyerEmail') || state.user?.email || 'buyer@nexus-demo.com', company:val('buyerCompany') || state.user?.company || 'Example Business', notes:val('buyerNotes'), config:{...state.customize}, createdAt:new Date().toLocaleString()};
+      const order={id:'ord-'+Date.now(), productId:p.id, productTitle:p.title, developerId:(p.developerId || developerIdFromSeller(p.seller)), status:'Setup required', setupType:state.setupType || 'Self-serve', priceMonthly:est.monthly, priceOneTime:est.oneTime, buyerName:val('buyerName') || state.user?.name || 'Demo Buyer', email:val('buyerEmail') || state.user?.email || 'buyer@nexus-demo.com', company:val('buyerCompany') || state.user?.company || 'Example Business', notes:val('buyerNotes'), config:{...state.customize}, createdAt:new Date().toLocaleString()};
       store.orders.unshift(order);
       store.business.automations.unshift({id:order.id,name:p.title,status:'Setup',team:p.category,health:'Needs setup',price:pricingText(p),runs:0,outputs:0,last:'Not live',next:'Waiting setup',integration:state.customize.integration,desc:p.short});
       store.business.tasks.unshift({id:'task-'+Date.now(),title:'Complete setup for '+p.title,automation:p.title,status:'Required',due:'Before launch'});
@@ -675,6 +792,22 @@
       return `<section class="section"><div class="container"><div class="section-head center"><span class="eyebrow">Demo login</span><h1 style="font-size:3.6rem">Choose a workspace.</h1><p>Use these demo roles to explore the business dashboard, developer dashboard, and Nexus admin review workspace.</p></div><div class="grid">${[['buyer','Business Buyer','Manage purchases, setup tasks, credentials, outputs, logs, and billing.','B','green'],['developer','Developer / Seller','Submit automations, manage listings, answer questions, and track installs.','D','purple'],['admin','Nexus Admin','Review developer submissions, buyer questions, orders, and marketplace status.','A','blue']].map(x=>`<div class="card highlight"><div class="icon ${x[4]}">${x[3]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class="btn btn-primary" onclick="login('${x[0]}')">Login as ${x[1]}</button></div>`).join('')}</div></div></section>`;
     }
 
+
+    function DeveloperDirectory(){
+      const devs = getStore().developers || [];
+      return `<section class="hero" style="padding:3.8rem 0 2.8rem"><div class="container"><span class="eyebrow">Developer profiles</span><h1 style="max-width:900px">Explore automation builders on Nexus.</h1><p style="max-width:760px;color:var(--muted);font-size:1.08rem">Each developer profile has a public link, listings, reviews, specialties, and support information.</p></div></section><section class="section"><div class="container"><div class="grid">${devs.map(dev=>DeveloperProfileCard(dev)).join('')}</div></div></section>`;
+    }
+    function DeveloperProfileCard(dev){
+      return `<div class="card highlight"><div style="display:flex;gap:1rem;align-items:flex-start">${AvatarHTML(dev)}<div><span class="pill ${dev.verified?'green':'blue'}">${dev.verified?'Verified':'Developer'}</span><h2 style="font-size:1.6rem">${dev.name}</h2><p>${dev.headline}</p></div></div><div class="tag-row">${(dev.specialties||[]).slice(0,5).map(x=>`<span class="tag">${x}</span>`).join('')}</div><div class="meta-grid"><div class="meta"><span>Listings</span><strong>${developerProducts(dev.id).length}</strong></div><div class="meta"><span>Reviews</span><strong>${developerReviews(dev.id).length}</strong></div><div class="meta"><span>Rating</span><strong>${avgRating(dev.id)==='New'?'New':'★ '+avgRating(dev.id)}</strong></div><div class="meta"><span>Profile</span><strong>Public</strong></div></div><button class="btn btn-primary btn-full" onclick="goDeveloperProfile('${dev.id}')">View profile</button></div>`;
+    }
+    function DeveloperProfilePage(){
+      const dev = getDeveloper(state.profileId || 'nexus-ai');
+      const products = developerProducts(dev.id);
+      const reviews = developerReviews(dev.id);
+      const rating = avgRating(dev.id);
+      return `<section class="section" style="padding-top:2rem"><div class="container"><div class="dev-banner">${dev.banner ? `<img src="${dev.banner}" alt="${dev.name} banner">` : ''}</div><div class="dev-profile-head"><div class="dev-title-card">${AvatarHTML(dev,'large')}<div><span class="pill ${dev.verified?'green':'blue'}">${dev.verified?'Verified Nexus developer':'Marketplace developer'}</span><h1>${dev.name}</h1><p>${dev.headline}</p></div></div><div class="hero-actions"><button class="btn btn-primary" onclick="copyText(publicProfileUrl('${dev.id}'))">Copy profile link</button><button class="btn btn-ghost" onclick="go('marketplace')">Browse marketplace</button></div></div><div class="dev-stats"><div class="dev-stat"><span>Rating</span><strong>${rating==='New'?'New':'★ '+rating}</strong></div><div class="dev-stat"><span>Reviews</span><strong>${reviews.length}</strong></div><div class="dev-stat"><span>Listings</span><strong>${products.length}</strong></div><div class="dev-stat"><span>Verified</span><strong>${dev.verified?'Yes':'Review'}</strong></div></div><div class="grid-2"><div class="card"><h2>About ${dev.name}</h2><p>${dev.bio}</p><div class="tag-row">${(dev.specialties||[]).map(x=>`<span class="tag">${x}</span>`).join('')}</div><div class="info-block"><h4>Contact</h4><p>${dev.website ? `<strong>Website:</strong> ${dev.website}<br>`:''}<strong>Support:</strong> ${dev.supportEmail || 'Via Nexus support'}</p></div></div><div class="card"><h2>Reviews</h2>${reviews.length?`<div class="review-list">${reviews.map(ReviewCard).join('')}</div>`:'<p class="muted">No reviews yet.</p>'}</div></div><div class="section-head" style="margin-top:2rem"><div><span class="eyebrow">Listings</span><h2>Automations by ${dev.name}</h2></div></div><div class="grid">${products.map(ProductCard).join('') || EmptyState('No listings yet','This developer has no published listings.')}</div></div></section>`;
+    }
+    function ReviewCard(r){return `<div class="review-card"><div style="display:flex;justify-content:space-between;gap:1rem"><strong>${r.title || r.productTitle}</strong><span class="stars">${'★'.repeat(Number(r.rating||0))}${'☆'.repeat(5-Number(r.rating||0))}</span></div><p>${r.comment}</p><span class="muted" style="font-size:.84rem">${r.buyer} · ${r.productTitle} · ${r.date}</span></div>`}
     function About(){
       return `<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">About Nexus AI</span><h1>Business automation, <span>ready when you are.</span></h1><p>Nexus AI helps businesses discover and launch practical AI automations without starting from zero. Instead of figuring out every tool, workflow, integration, and setup step alone, teams can find ready-made solutions and move faster.</p><div class="hero-actions"><button class="btn btn-primary" onclick="go('contact')">Talk to Nexus</button><button class="btn btn-ghost" onclick="go('marketplace')">View marketplace</button></div></div><div class="hero-panel"><div class="panel-top"><div>What Nexus does</div><span class="pill blue">Find -> Configure -> Launch</span></div><div class="mini-stack">${[['Find','Search by problem, team, category, or outcome.'],['Configure','Add information, accounts, tone, and workflow rules.'],['Launch','Use self-serve or guided setup to get running.']].map((x,i)=>`<div class="mini-card"><div class="icon blue">${i+1}</div><div><h3>${x[0]}</h3><p>${x[1]}</p></div></div>`).join('')}</div></div></div></section><section class="section"><div class="container grid-2"><div class="card highlight"><span class="pill green">Simple purpose</span><h2>We make useful AI easier to adopt.</h2><p>Many companies understand that AI can save time, improve customer engagement, and create better insights. The hard part is implementation. Nexus AI focuses on making the path from need to working automation clearer and faster.</p><p>Each marketplace product explains what it does, what information it needs, how it is deployed, and what the buyer can monitor after launch.</p></div><div class="card"><span class="pill purple">Who it is for</span><h2>Built for teams that want results, not complexity.</h2><div class="activity"><div class="activity-row"><span class="dot"></span><div><strong>Businesses</strong><p class="muted">Find AI tools for reporting, support, sales, marketing, operations, and more.</p></div><span></span></div><div class="activity-row"><span class="dot warn"></span><div><strong>Developers</strong><p class="muted">Package useful automations into products that businesses can discover and use.</p></div><span></span></div><div class="activity-row"><span class="dot"></span><div><strong>Nexus</strong><p class="muted">Reviews, hosts, monitors, and manages the buyer experience.</p></div><span></span></div></div></div></div></section><section class="section light"><div class="container"><div class="section-head center"><span class="eyebrow">Operating model</span><h2>Nexus gives the marketplace trust layer.</h2><p>Developers are not directly hosting customer automations. Nexus becomes the platform layer for review, deployment, credentials, logs, support, and buyer confidence.</p></div><div class="grid-4">${[['Review','Submission checks and hosting readiness.'],['Host','Runtime controlled by Nexus infrastructure.'],['Monitor','Logs, outputs, status, and setup tasks.'],['Support','Nexus first, developer escalation when needed.']].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div></div></section>`;
     }
@@ -691,7 +824,7 @@
 
     function DashboardShell(role, body){
       const store=getStore();
-      const tabs = role==='buyer' ? [['overview','Overview'],['automations','Automations'],['outputs','Outputs'],['tasks','Setup tasks'],['credentials','Credentials'],['logs','Run logs'],['billing','Billing']] : role==='developer' ? [['overview','Overview'],['listings','Listings'],['submit','Submit / upload'],['questions','Questions'],['installs','Installs'],['analytics','Analytics'],['payouts','Payouts']] : [['overview','Overview'],['reviews','Review queue'],['orders','Orders'],['questions','Questions'],['contacts','Contacts'],['marketplace','Marketplace']];
+      const tabs = role==='buyer' ? [['overview','Overview'],['automations','Automations'],['outputs','Outputs'],['tasks','Setup tasks'],['credentials','Credentials'],['logs','Run logs'],['reviews','Reviews'],['billing','Billing']] : role==='developer' ? [['overview','Overview'],['profile','Profile'],['listings','Listings'],['submit','Submit / upload'],['reviews','Reviews'],['questions','Questions'],['installs','Installs'],['analytics','Analytics'],['payouts','Payouts']] : [['overview','Overview'],['reviews','Review queue'],['orders','Orders'],['questions','Questions'],['contacts','Contacts'],['marketplace','Marketplace']];
       const user = state.user || store.users[role];
       return `<section class="section light"><div class="container dashboard-layout"><aside class="dash-nav"><div class="dash-identity"><strong>${user.company}</strong><span>${user.name} • ${role} workspace</span></div>${tabs.map(([id,label])=>`<button class="${state.dashTab[role]===id?'active':''}" onclick="state.dashTab.${role}='${id}';render()"><span>${label}</span></button>`).join('')}<button onclick="go('marketplace')"><span>Back to marketplace</span></button></aside><main>${body}</main></div></section>`;
     }
@@ -705,6 +838,7 @@
       if(tab==='tasks') return DashboardShell('buyer', stats + Table(['Task','Automation','Status','Due','Action'], b.tasks.map(t=>[`<strong>${t.title}</strong>`,t.automation,statusPill(t.status),t.due,`<button class="btn btn-primary btn-small" onclick="toast('Demo task opened')">Open</button>`])));
       if(tab==='credentials') return DashboardShell('buyer', stats + Table(['Credential','Automation','Status','Updated','Action'], b.credentials.map(c=>[`<strong>${c.name}</strong>`,c.automation,statusPill(c.status),c.updated,`<button class="btn btn-soft btn-small" onclick="toast('Credential update demo')">Update</button>`])));
       if(tab==='logs') return DashboardShell('buyer', stats + `<div class="card"><h2>Run logs</h2><div class="activity">${b.logs.concat(purchased.map(o=>({level:'warn',title:o.productTitle+' setup created',detail:'Order '+o.id+' is waiting on final setup.',time:o.createdAt}))).map(l=>`<div class="activity-row"><span class="dot ${l.level==='err'?'err':l.level==='warn'?'warn':''}"></span><div><strong>${l.title}</strong><p>${l.detail}</p></div><small>${l.time}</small></div>`).join('')}</div></div>`);
+      if(tab==='reviews') return DashboardShell('buyer', stats + BuyerReviewsView());
       return DashboardShell('buyer', stats + `<div class="card"><h2>Billing</h2><p class="muted">Demo billing summary for purchased automations.</p></div>${Table(['Order','Setup','Monthly','One-time','Status'], purchased.map(o=>[`<strong>${o.productTitle}</strong><br><span class="muted">${o.createdAt}</span>`,o.setupType,money(o.priceMonthly),money(o.priceOneTime),statusPill(o.status)]))}`);
     }
 
@@ -713,8 +847,10 @@
       const published=subs.filter(x=>x.status==='approved').length, pending=subs.filter(x=>x.status==='pending').length;
       const stats = `<div class="stat-grid"><div class="stat"><span>Listings</span><strong>${subs.length}</strong></div><div class="stat"><span>Published</span><strong>${published}</strong></div><div class="stat"><span>Review</span><strong>${pending}</strong></div><div class="stat"><span>Revenue</span><strong>$4,491</strong></div></div>`;
       if(tab==='overview') return DashboardShell('developer', `${stats}<div class="grid-2"><div class="card"><h2>Developer command center</h2><p class="muted">Submit automations, track Nexus review status, view buyer questions, and monitor installs.</p><div class="tag-row"><button class="btn btn-primary" onclick="state.dashTab.developer='submit';render()">Submit automation</button><button class="btn btn-ghost" onclick="state.dashTab.developer='listings';render()">Manage listings</button></div></div><div class="card"><h2>Review reminders</h2><div class="activity"><div class="activity-row"><span class="dot warn"></span><div><strong>Runtime notes required</strong><p>Include environment variables, schedules, input and output schema.</p></div><span></span></div><div class="activity-row"><span class="dot"></span><div><strong>Nexus hosts the runtime</strong><p>Developers submit packages; customers do not run developer infrastructure.</p></div><span></span></div></div></div></div>`);
+      if(tab==='profile') return DashboardShell('developer', stats + DeveloperProfileEditor());
       if(tab==='submit') return DashboardShell('developer', stats + SubmitAutomationForm(subs));
       if(tab==='listings') return DashboardShell('developer', stats + Table(['Submission','Status','Hosting','Type','Price','Created'], subs.map(l=>[`<strong>${l.title}</strong><br><span class="muted">${l.category}</span>`,statusPill(l.status),'Nexus review/hosting',l.type,`${l.monthlyPrice?money(l.monthlyPrice)+'/mo':''}${l.oneTimePrice?' + '+money(l.oneTimePrice):''}`,l.createdAt])));
+      if(tab==='reviews') return DashboardShell('developer', stats + DeveloperReviewsView());
       if(tab==='questions') return DashboardShell('developer', stats + Table(['Product','Company','Question','Status','Date'], questions.map(q=>[`<strong>${q.productTitle}</strong>`,q.company,q.question,statusPill('Routed via Nexus'),q.createdAt])));
       if(tab==='installs') return DashboardShell('developer', stats + Table(['Buyer','Automation','Status','Revenue','Support','Date'], [['Acme Hotels','Invoice Processing Automation','Active','$499','None','Today'],['BluePeak Agency','Invoice Processing Automation','Active','$499','Question open','Yesterday'],['Northstar Finance','Invoice Processing Automation','Setup','$499','Needs mapping','3 days ago']].map(r=>[`<strong>${r[0]}</strong>`,r[1],statusPill(r[2]),r[3],r[4],r[5]])));
       if(tab==='analytics') return DashboardShell('developer', stats + `<div class="grid-4">${[['Views','1,840'],['Conversion','6.4%'],['Avg rating','4.5'],['Open support','1']].map(x=>`<div class="stat"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join('')}</div><div class="card" style="margin-top:1rem"><h2>Analytics</h2><p class="muted">Demo marketplace analytics. Connect production events later.</p></div>`);
@@ -725,10 +861,58 @@
     }
     function saveSubmission(status){
       const s=getStore();
-      s.submissions.unshift({id:'sub-'+Date.now(), seller:state.user?.company || 'Demo Developer', title:val('subTitle') || 'Untitled Automation', category:val('subCategory'), type:val('subType'), monthlyPrice:val('subMonthly'), oneTimePrice:val('subOneTime'), complexity:val('subComplexity'), short:val('subShort'), description:val('subDescription') || 'No description yet.', integrations:val('subIntegrations'), credentials:val('subCredentials'), runtime:val('subRuntime'), security:val('subSecurity'), support:val('subSupport'), setup:'Nexus review + 3-7 days', status, createdAt:new Date().toLocaleString()});
+      const dev=getDeveloper(currentDeveloperId());
+      s.submissions.unshift({id:'sub-'+Date.now(), developerId:dev.id, seller:dev.name, title:val('subTitle') || 'Untitled Automation', category:val('subCategory'), type:val('subType'), monthlyPrice:val('subMonthly'), oneTimePrice:val('subOneTime'), complexity:val('subComplexity'), short:val('subShort'), description:val('subDescription') || 'No description yet.', integrations:val('subIntegrations'), credentials:val('subCredentials'), runtime:val('subRuntime'), security:val('subSecurity'), support:val('subSupport'), setup:'Nexus review + 3-7 days', status, createdAt:new Date().toLocaleString()});
       saveStore(s); toast(status==='pending'?'Submitted to Nexus hosting review':'Draft saved'); state.dashTab.developer='listings'; render();
     }
 
+
+    function currentDeveloperId(){
+      const store=getStore();
+      return state.user?.developerId || store.users.developer.developerId || 'automation-studio';
+    }
+    function DeveloperProfileEditor(){
+      const dev=getDeveloper(currentDeveloperId());
+      return `<div class="grid-2"><div class="card highlight"><h2>Public developer profile</h2><p class="muted">This is the profile buyers can open from product pages. Developers can share it directly with customers.</p><div class="profile-preview" style="margin-top:1rem"><div class="dev-banner" style="height:160px;border-radius:22px">${dev.banner?`<img src="${dev.banner}">`:''}</div><div style="display:flex;gap:1rem;align-items:flex-end;margin-top:-36px;padding:0 .8rem .8rem;position:relative;z-index:2">${AvatarHTML(dev,'large')}<div><h2 style="margin:0">${dev.name}</h2><p>${dev.headline}</p></div></div><div class="tag-row">${(dev.specialties||[]).map(x=>`<span class="tag">${x}</span>`).join('')}</div></div><div class="copy-box" style="margin-top:1rem"><input readonly value="${publicProfileUrl(dev.id)}" id="publicProfileLink"><button class="btn btn-primary btn-small" onclick="copyText(publicProfileUrl('${dev.id}'))">Copy</button><button class="btn btn-ghost btn-small" onclick="goDeveloperProfile('${dev.id}')">Open</button></div></div><div class="card"><h2>Edit profile</h2><div class="form-grid"><div><label>Public name</label><input id="devName" value="${dev.name}"></div><div><label>Slug</label><input id="devSlug" value="${dev.slug}"></div><div class="full"><label>Headline</label><input id="devHeadline" value="${dev.headline}"></div><div class="full"><label>Bio</label><textarea id="devBio">${dev.bio}</textarea></div><div><label>Website</label><input id="devWebsite" value="${dev.website || ''}"></div><div><label>Support email</label><input id="devSupport" value="${dev.supportEmail || ''}"></div><div class="full"><label>Specialties (comma separated)</label><input id="devSpecialties" value="${(dev.specialties||[]).join(', ')}"></div><div><label>Banner image URL</label><input id="devBanner" value="${dev.banner || ''}" placeholder="https://..."></div><div><label>Profile image URL</label><input id="devAvatar" value="${dev.avatar || ''}" placeholder="https://..."></div><div><label>Upload banner</label><input type="file" accept="image/*" onchange="uploadDevImage('banner',this)"></div><div><label>Upload profile picture</label><input type="file" accept="image/*" onchange="uploadDevImage('avatar',this)"></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="saveDevProfile()">Save profile</button></div></div>`;
+    }
+    function saveDevProfile(){
+      const store=getStore(); const id=currentDeveloperId(); const dev=store.developers.find(d=>d.id===id);
+      if(!dev) return;
+      dev.name=val('devName')||dev.name; dev.studio=dev.name; dev.slug=(val('devSlug')||dev.slug).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); dev.headline=val('devHeadline'); dev.bio=val('devBio'); dev.website=val('devWebsite'); dev.supportEmail=val('devSupport'); dev.specialties=val('devSpecialties').split(',').map(x=>x.trim()).filter(Boolean); dev.banner=val('devBanner'); dev.avatar=val('devAvatar');
+      store.users.developer.company=dev.name; store.users.developer.developerId=dev.id;
+      saveStore(store); toast('Developer profile saved'); render();
+    }
+    function uploadDevImage(type,input){
+      const file=input.files && input.files[0]; if(!file) return;
+      const reader=new FileReader();
+      reader.onload=()=>{ const target= type==='banner' ? 'devBanner' : 'devAvatar'; document.getElementById(target).value=reader.result; toast(type==='banner'?'Banner loaded':'Profile picture loaded'); };
+      reader.readAsDataURL(file);
+    }
+    function DeveloperReviewsView(){
+      const devId=currentDeveloperId(); const reviews=developerReviews(devId);
+      return `<div class="grid-2"><div class="card"><h2>Reviews received</h2><p class="muted">Reviews are shown on your public profile and product trust surfaces.</p><div class="dev-stats" style="grid-template-columns:1fr 1fr"><div class="dev-stat"><span>Average</span><strong>${avgRating(devId)==='New'?'New':'★ '+avgRating(devId)}</strong></div><div class="dev-stat"><span>Total</span><strong>${reviews.length}</strong></div></div>${reviews.length?`<div class="review-list">${reviews.map(ReviewCard).join('')}</div>`:'<p class="muted">No reviews yet.</p>'}</div><div class="card"><h2>Add demo review</h2><p class="muted">For MVP testing only. In production, reviews should come from verified buyers.</p><div class="form-grid"><div><label>Buyer</label><input id="demoReviewBuyer" placeholder="Buyer company"></div><div><label>Rating</label><select id="demoReviewRating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div><div class="full"><label>Review title</label><input id="demoReviewTitle" placeholder="Great automation"></div><div class="full"><label>Comment</label><textarea id="demoReviewComment" placeholder="What did the buyer say?"></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="addDemoDevReview()">Add demo review</button></div></div>`;
+    }
+    function addDemoDevReview(){
+      const store=getStore(); const devId=currentDeveloperId(); const products=developerProducts(devId); const p=products[0] || {id:'profile',title:'Developer profile'};
+      store.developerReviews.unshift({id:'rev-'+Date.now(), developerId:devId, productId:p.id, productTitle:p.title, rating:Number(val('demoReviewRating')||5), buyer:val('demoReviewBuyer')||'Demo Buyer', title:val('demoReviewTitle')||'Helpful automation partner', comment:val('demoReviewComment')||'Great experience with this developer.', date:new Date().toLocaleDateString()});
+      saveStore(store); toast('Demo review added'); render();
+    }
+    function BuyerReviewsView(){
+      const store=getStore(); const orders=store.orders;
+      return `<div class="card"><h2>Leave developer reviews</h2><p class="muted" style="margin-bottom:1rem">After purchase, buyers can review the developer. Reviews appear on the developer public profile.</p>${orders.length?Table(['Automation','Developer','Status','Review'], orders.map(o=>{const p=allProducts().find(x=>x.id===o.productId)||{}; const dev=developerForProduct(p); return [`<strong>${o.productTitle}</strong><br><span class="muted">${o.createdAt}</span>`,`<button class="dev-link" onclick="goDeveloperProfile('${dev.id}')">${dev.name}</button>`,statusPill(o.status),`<button class="btn btn-primary btn-small" onclick="openReviewModal('${o.id}')">Leave review</button>`]})):'<p class="muted">No purchases yet. Buy an automation first.</p>'}</div>`;
+    }
+    function openReviewModal(orderId){
+      const store=getStore(); const o=store.orders.find(x=>x.id===orderId); if(!o) return;
+      const p=allProducts().find(x=>x.id===o.productId)||{}; const dev=developerForProduct(p);
+      document.getElementById('questionModal').classList.add('open');
+      document.querySelector('#questionModal .modal').innerHTML = `<div class="modal-main"><div class="modal-head"><div><span class="pill green">Buyer review</span><h2>Review ${dev.name}</h2><p class="muted">For ${o.productTitle}</p></div><button class="close" onclick="closeQuestion();render()">Close</button></div><div class="form-grid"><div><label>Rating</label><select id="buyerReviewRating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div><div><label>Review title</label><input id="buyerReviewTitle" placeholder="Great setup experience"></div><div class="full"><label>Comment</label><textarea id="buyerReviewComment" placeholder="What was your experience?"></textarea></div></div><button class="btn btn-primary" style="margin-top:1rem" onclick="submitBuyerReview('${orderId}')">Submit review</button></div>`;
+    }
+    function submitBuyerReview(orderId){
+      const store=getStore(); const o=store.orders.find(x=>x.id===orderId); const p=allProducts().find(x=>x.id===o.productId)||{}; const dev=developerForProduct(p);
+      store.developerReviews.unshift({id:'rev-'+Date.now(), developerId:dev.id, productId:p.id, productTitle:o.productTitle, rating:Number(val('buyerReviewRating')||5), buyer:o.company || 'Buyer', title:val('buyerReviewTitle')||'Good experience', comment:val('buyerReviewComment')||'The automation and support were useful.', date:new Date().toLocaleDateString()});
+      saveStore(store); closeQuestion(); toast('Review added to developer profile'); render();
+    }
+    function copyText(text){navigator.clipboard?.writeText(text); toast('Profile link copied');}
     function AdminDashboard(){
       const s=getStore(); const tab=state.dashTab.admin; const pending=s.submissions.filter(x=>x.status==='pending');
       const stats=`<div class="stat-grid"><div class="stat"><span>Orders</span><strong>${s.orders.length}</strong></div><div class="stat"><span>Questions</span><strong>${s.questions.length}</strong></div><div class="stat"><span>Hosting review</span><strong>${pending.length}</strong></div><div class="stat"><span>Marketplace</span><strong>${allProducts().length}</strong></div></div>`;
@@ -747,6 +931,7 @@
 
     document.getElementById('productModal').addEventListener('click', e=>{ if(e.target.id==='productModal') closeProduct(); });
     document.getElementById('questionModal').addEventListener('click', e=>{ if(e.target.id==='questionModal') closeQuestion(); });
+    parseHash();
     render();
   </script>
 </body>
